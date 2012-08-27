@@ -1,0 +1,48 @@
+<genome id="26045" species-id="17" age="1" fitness="150184.00">
+  <neurons>
+    <neuron id="0" type="bias" activationFunction="NullFn" layer="0"/>
+    <neuron id="1" type="in" activationFunction="NullFn" layer="0"/>
+    <neuron id="2" type="in" activationFunction="NullFn" layer="0"/>
+    <neuron id="3" type="in" activationFunction="NullFn" layer="0"/>
+    <neuron id="4" type="in" activationFunction="NullFn" layer="0"/>
+    <neuron id="5" type="in" activationFunction="NullFn" layer="0"/>
+    <neuron id="6" type="out" activationFunction="BipolarSigmoid" layer="10"/>
+    <neuron id="7" type="out" activationFunction="BipolarSigmoid" layer="10"/>
+    <neuron id="350" type="hid" activationFunction="ModuleInputNeuron" layer="5"/>
+    <neuron id="352" type="hid" activationFunction="ModuleInputNeuron" layer="5"/>
+    <neuron id="354" type="hid" activationFunction="ModuleOutputNeuron" layer="5"/>
+    <neuron id="356" type="hid" activationFunction="ModuleInputNeuron" layer="5"/>
+    <neuron id="358" type="hid" activationFunction="ModuleInputNeuron" layer="5"/>
+    <neuron id="360" type="hid" activationFunction="ModuleOutputNeuron" layer="5"/>
+    <neuron id="609" type="hid" activationFunction="ErrorSign" layer="2.5"/>
+  </neurons>
+  <modules>
+    <module id="356" function="Multiply">
+      <input id="350" order="0" />
+      <input id="352" order="1" />
+      <output id="354" order="0" />
+    </module>
+    <module id="362" function="Multiply">
+      <input id="356" order="0" />
+      <input id="358" order="1" />
+      <output id="360" order="0" />
+    </module>
+  </modules>
+  <connections>
+    <connection innov-id="8" src-id="0" tgt-id="6" weight="0" />
+    <connection innov-id="9" src-id="2" tgt-id="6" weight="0" />
+    <connection innov-id="10" src-id="4" tgt-id="6" weight="0" />
+    <connection innov-id="11" src-id="5" tgt-id="609" weight="1" />
+    <connection innov-id="12" src-id="609" tgt-id="350" weight="1" />
+    <connection innov-id="13" src-id="1" tgt-id="352" weight="0" />
+    <connection innov-id="14" src-id="354" tgt-id="6" weight="0" />
+    <connection innov-id="15" src-id="3" tgt-id="358" weight="0" />
+    <connection innov-id="16" src-id="609" tgt-id="356" weight="1" />
+    <connection innov-id="17" src-id="360" tgt-id="6" weight="0" />
+    <connection innov-id="18" src-id="0" tgt-id="7" weight="0" />
+    <connection innov-id="19" src-id="2" tgt-id="7" weight="0" />
+    <connection innov-id="20" src-id="4" tgt-id="7" weight="0" />
+    <connection innov-id="21" src-id="354" tgt-id="7" weight="0" />
+    <connection innov-id="22" src-id="360" tgt-id="7" weight="0" />
+  </connections>
+</genome>

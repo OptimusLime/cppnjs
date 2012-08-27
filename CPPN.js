@@ -1,6 +1,9 @@
-
 var nss = "CPPNs";
 var ns = namespace(nss);
+
+
+
+
 
 ns.NeuronType =
 {
@@ -170,8 +173,18 @@ ns.AbstractNetwork = function(neuronList){
     this.LoadNeuronList(neuronList);
 };
 ns.AbstractNetwork.inheritsFrom(ns.INetwork );
+
+ns.AbstractNetwork.inputNeuronList = [];
+ns.AbstractNetwork.outputNeuronList = [];
+ns.AbstractNetwork.masterNeuronList = [];
+
 ns.AbstractNetwork.prototype.LoadNeuronList=function(neuronList){
+    //can't load something that isn't there!
+    if(!neuronList)
+        return;
+
     this.masterNeuronList = neuronList;
+
 
     var loopBound = this.masterNeuronList.length;
     for(var j=0; j<loopBound; j++)
