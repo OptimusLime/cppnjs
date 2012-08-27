@@ -1,7 +1,8 @@
 
-var nss = "Maths";
+
+var mathNSS = "Maths";
 Maths = {};
-var ns = namespace(nss);
+var mathNS = namespace(mathNSS);
 
 //class FastRandom
 
@@ -12,14 +13,14 @@ var ns = namespace(nss);
 
 //Class Roulette Wheel
 
-ns.RouletteWheel = {};
+mathNS.RouletteWheel = {};
 
 /// <summary>
 /// A simple single throw routine.
 /// </summary>
 /// <param name="probability">A probability between 0..1 that the throw will result in a true result.</param>
 /// <returns></returns>
-ns.RouletteWheel.SingleThrow = function(probability)
+mathNS.RouletteWheel.SingleThrow = function(probability)
 {
     return (Math.random() <= probability ? true : false)
 };
@@ -28,7 +29,7 @@ ns.RouletteWheel.SingleThrow = function(probability)
 /// </summary>
 /// <param name="numberOfOutcomes"></param>
 /// <returns>An integer between 0..numberOfOutcomes-1. In effect this routine selects one of the possible outcomes.</returns>
-ns.RouletteWheel.SingleThrowEven = function(numberOfOutcomes)
+mathNS.RouletteWheel.SingleThrowEven = function(numberOfOutcomes)
 {
     var probability= 1.0 / numberOfOutcomes;
     var accumulator=0;
@@ -52,7 +53,7 @@ ns.RouletteWheel.SingleThrowEven = function(numberOfOutcomes)
     /// </summary>
     /// <param name="probabilities"></param>
     /// <returns></returns>
-ns.RouletteWheel.SingleThrow = function(probabilities)
+mathNS.RouletteWheel.SingleThrow = function(probabilities)
 {
     var pTotal=0;	// Total probability
 
@@ -83,7 +84,7 @@ ns.RouletteWheel.SingleThrow = function(probabilities)
     /// </summary>
     /// <param name="probabilities"></param>
     /// <returns></returns>
-ns.RouletteWheel.MultipleThrows = function(probabilities)
+mathNS.RouletteWheel.MultipleThrows = function(probabilities)
     {
         var pTotal=0;	// Total probability
         var numberOfThrows;

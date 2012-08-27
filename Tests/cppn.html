@@ -15,6 +15,8 @@
     <script type="text/javascript" src="../Maths.js"></script>
     <script type="text/javascript" src="../ActivationFunctions.js"></script>
     <script type="text/javascript" src="../CPPN.js"></script>
+    <script type="text/javascript" src="CPPNTests.js"></script>
+    <script type='text/javascript' src='../Support/Decoding.js'></script>
     <script type='text/javascript'>
 
         window.onload = function()
@@ -51,6 +53,11 @@
                                 var xd =  xml.parseDocument(doc);
                                 console.log(xd["#document"]);
 
+                                var genome = xd["#document"].TestDoc.genome;
+
+                                console.log(Decoding.CPPNFromJSON(genome, Decoding.CPPNTypes.Concurrent))
+
+                                testsNS.CPPNTests(xd["#document"].TestDoc);
                                // console.log(typeof xd["#document"].TestDoc.results.result[0].r2);
 
                                 //var span = document.createElement('span');

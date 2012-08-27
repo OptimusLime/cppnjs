@@ -1,7 +1,7 @@
 //requires some helpers
 
-var nss = "NEAT.Activation";
-var ns = namespace(nss);
+var actNSS = "NEAT.Activation";
+var actNS = namespace(actNSS);
 
 
 //singleton pattern for activation factory -- and it makes the ActivationFunctionFactory globally available
@@ -44,7 +44,7 @@ var ActivationFunctionFactory = new function ActivationFunctionFactory()
     ActivationFunctionFactory.CreateActivationFunction = function(functionId)
     {
         // For now the function ID is the name of a class that implements IActivationFunction.
-        var className = stringToFunction(nss + "." + functionId);
+        var className = stringToFunction(actNSS.toString()  + "." + functionId);
         return new className(); // (IActivationFunction)Assembly.GetExecutingAssembly().CreateInstance(className);
     };
 
@@ -56,8 +56,8 @@ var ActivationFunctionFactory = new function ActivationFunctionFactory()
     return ActivationFunctionFactory;
 };
 
-ns.BipolarSigmoid  = function() {};
-ns.BipolarSigmoid.prototype =
+actNS.BipolarSigmoid  = function() {};
+actNS.BipolarSigmoid.prototype =
 {
     Calculate : function(inputSignal) {  return (2.0 / (1.0 + Math.exp(-4.9 * inputSignal))) - 1.0; },
     FunctionId : function() { return "BipolarSigmoid";  },
@@ -65,8 +65,8 @@ ns.BipolarSigmoid.prototype =
     FunctionDescription : function() { return "bipolar steepend sigmoid"; }
 };
 
-ns.ErrorSign  = function() {  this.error = .0001;};
-ns.ErrorSign.prototype =
+actNS.ErrorSign  = function() {  this.error = .0001;};
+actNS.ErrorSign.prototype =
 {
 
     Calculate : function(inputSignal) {
@@ -85,8 +85,8 @@ ns.ErrorSign.prototype =
     FunctionDescription : function() { return "Returns the sign of the input with some error around 0"; }
 };
 
-ns.Gaussian  = function() {};
-ns.Gaussian.prototype =
+actNS.Gaussian  = function() {};
+actNS.Gaussian.prototype =
 {
     Calculate : function(inputSignal) {  return  2 * Math.exp(-Math.pow(inputSignal * 2.5, 2)) - 1;},
     FunctionId : function() { return "Gaussian";  },
@@ -94,8 +94,8 @@ ns.Gaussian.prototype =
     FunctionDescription : function() { return "bimodal gaussian"; }
 };
 
-ns.InverseAbsoluteSigmoid  = function() {};
-ns.InverseAbsoluteSigmoid.prototype =
+actNS.InverseAbsoluteSigmoid  = function() {};
+actNS.InverseAbsoluteSigmoid.prototype =
 {
     Calculate : function(inputSignal) {  return 0.5 + ((inputSignal / (1.0+Math.abs(inputSignal)))*0.5);},
     FunctionId : function() { return "InverseAbsoluteSigmoid";  },
@@ -103,8 +103,8 @@ ns.InverseAbsoluteSigmoid.prototype =
     FunctionDescription : function() { return ""; }
 };
 
-ns.Linear  = function() {};
-ns.Linear.prototype =
+actNS.Linear  = function() {};
+actNS.Linear.prototype =
 {
     Calculate : function(inputSignal) { return Math.abs(inputSignal);},
     FunctionId : function() { return "Linear";  },
@@ -112,11 +112,11 @@ ns.Linear.prototype =
     FunctionDescription : function() { return "Linear"; }
 };
 
-ns.Modulus  = function() { this.delta = (2.0 / ns.Modulus.factor); };
-ns.Modulus.factor = 5;
-ns.Modulus.constant = 10000000;
+actNS.Modulus  = function() { this.delta = (2.0 / actNS.Modulus.factor); };
+actNS.Modulus.factor = 5;
+actNS.Modulus.constant = 10000000;
 
-ns.Modulus.prototype =
+actNS.Modulus.prototype =
 {
     Calculate : function(inputSignal, fact) {
         if(fact === undefined)
@@ -124,30 +124,30 @@ ns.Modulus.prototype =
             //shift to 0-max#
             inputSignal = ((51 + inputSignal));
             //find modulus (inputSignal>0 <ddelta)
-            inputSignal *= ns.Modulus.constant ;
-            inputSignal = (Math.floor(inputSignal)% Math.floor(this.delta * ns.Modulus.constant));
-            inputSignal /= ns.Modulus.constant ;
-            inputSignal = inputSignal * (ns.Modulus.factor);
+            inputSignal *= actNS.Modulus.constant ;
+            inputSignal = (Math.floor(inputSignal)% Math.floor(this.delta * actNS.Modulus.constant));
+            inputSignal /= actNS.Modulus.constant ;
+            inputSignal = inputSignal * (actNS.Modulus.factor);
             return (inputSignal) - 1;
         }
         else
         {
             var delta = 2.0 / fact;
             inputSignal += 51;
-            inputSignal *= ns.Modulus.constant;
-            inputSignal = Math.floor(inputSignal) % Math.floor(delta * ns.Modulus.constant);
-            inputSignal /= ns.Modulus.constant;
+            inputSignal *= actNS.Modulus.constant;
+            inputSignal = Math.floor(inputSignal) % Math.floor(delta * actNS.Modulus.constant);
+            inputSignal /= actNS.Modulus.constant;
             inputSignal *= fact;
             return inputSignal - 1;
         }
     },
     FunctionId : function() { return "Modulus"; },
-    FunctionString : function() { return "Mod" + ns.Modulus.factor; },
-    FunctionDescription : ns.Modulus.FunctionId
+    FunctionString : function() { return "Mod" + actNS.Modulus.factor; },
+    FunctionDescription : actNS.Modulus.FunctionId
 };
 
-ns.NullFn  = function() {};
-ns.NullFn.prototype =
+actNS.NullFn  = function() {};
+actNS.NullFn.prototype =
 {
     Calculate : function() {  return 0;},
     FunctionId : function() { return "NullFn";  },
@@ -155,8 +155,8 @@ ns.NullFn.prototype =
     FunctionDescription : function() { return "return 0"; }
 };
 
-ns.PlainSigmoid  = function() {};
-ns.PlainSigmoid.prototype =
+actNS.PlainSigmoid  = function() {};
+actNS.PlainSigmoid.prototype =
 {
     Calculate : function(inputSignal) {  return 1.0/(1.0+(Math.exp(-inputSignal)));},
     FunctionId : function() { return "PlainSigmoid";  },
@@ -164,8 +164,8 @@ ns.PlainSigmoid.prototype =
     FunctionDescription : function() { return "Plain sigmoid [xrange -5.0,5.0][yrange, 0.0,1.0]"; }
 };
 
-ns.ReducedSigmoid  = function() {};
-ns.ReducedSigmoid.prototype =
+actNS.ReducedSigmoid  = function() {};
+actNS.ReducedSigmoid.prototype =
 {
     Calculate : function(inputSignal) {  return 1.0/(1.0+(Math.exp(-0.5*inputSignal)));},
     FunctionId : function() { return "ReducedSigmoid";  },
@@ -173,8 +173,8 @@ ns.ReducedSigmoid.prototype =
     FunctionDescription : function() { return "Reduced Sigmoid  [xrange -5.0,5.0][yrange, 0.0,1.0]"; }
 };
 
-ns.SigmoidApproximation  = function() {};
-ns.SigmoidApproximation.prototype =
+actNS.SigmoidApproximation  = function() {};
+actNS.SigmoidApproximation.prototype =
 {
     Calculate : function(inputSignal) {
         var four = 4.0;
@@ -201,8 +201,8 @@ ns.SigmoidApproximation.prototype =
     FunctionDescription : function() { return "SigmoidApproximation"; }
 };
 
-ns.Sign  = function() {};
-ns.Sign.prototype =
+actNS.Sign  = function() {};
+actNS.Sign.prototype =
 {
     Calculate : function(inputSignal) {
         if (isNaN(inputSignal)) return 0;
@@ -213,8 +213,8 @@ ns.Sign.prototype =
     FunctionDescription : function() { return "Returns the sign of the input"; }
 };
 
-ns.Sine  = function() {};
-ns.Sine.prototype =
+actNS.Sine  = function() {};
+actNS.Sine.prototype =
 {
     Calculate : function(inputSignal) {  return  Math.sin(2*inputSignal);},
     FunctionId : function() { return "Sine";  },
@@ -222,8 +222,8 @@ ns.Sine.prototype =
     FunctionDescription : function() { return "Sin function with doubled period";  }
 };
 
-ns.SteepenedSigmoid  = function() {};
-ns.SteepenedSigmoid.prototype =
+actNS.SteepenedSigmoid  = function() {};
+actNS.SteepenedSigmoid.prototype =
 {
     Calculate : function(inputSignal) {  	return 1.0/(1.0 + Math.exp(-4.9*inputSignal)); },
     FunctionId : function() { return "SteepenedSigmoid";  },
@@ -231,8 +231,8 @@ ns.SteepenedSigmoid.prototype =
     FunctionDescription : function() { return "Steepened sigmoid [xrange -1.0,1.0][yrange, 0.0,1.0]";  }
 };
 
-ns.SteepenedSigmoidApproximation  = function() {};
-ns.SteepenedSigmoidApproximation.prototype =
+actNS.SteepenedSigmoidApproximation  = function() {};
+actNS.SteepenedSigmoidApproximation.prototype =
 {
     Calculate : function(inputSignal) {
         var one = 1.0;
@@ -259,8 +259,8 @@ ns.SteepenedSigmoidApproximation.prototype =
     FunctionDescription : function() { return "SteepenedSigmoidApproximation"; }
 };
 
-ns.StepFunction  = function() {};
-ns.StepFunction.prototype =
+actNS.StepFunction  = function() {};
+actNS.StepFunction.prototype =
 {
     Calculate : function(inputSignal) {
         if(inputSignal<0.0) return 0.0;

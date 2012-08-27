@@ -1,11 +1,8 @@
-var nss = "CPPNs";
-var ns = namespace(nss);
+var cppnsNSS = "CPPNs";
+var cppnsNS = namespace(cppnsNSS);
 
 
-
-
-
-ns.NeuronType =
+cppnsNS.NeuronType =
 {
     Input: 0,
     Bias : 1,
@@ -14,7 +11,8 @@ ns.NeuronType =
     Undefined : 4
 };
 
-ns.INetwork =
+
+cppnsNS.INetwork =
 {
     SingleStep : function(){},
     MultipleSteps: function(numberOfSteps){},
@@ -65,7 +63,7 @@ ns.INetwork =
 
 //more traditional connection type
 
-ns.Connection = function( sourceID,  targetID,  cWeight)
+cppnsNS.Connection = function( sourceID,  targetID,  cWeight)
 {
     var sourceNeuronId = sourceID; // These are redundant in normal operation (we have a reference to the neurons)
     var targetNeuronId = targetID;	// but is useful when creating/loading a network.
@@ -91,8 +89,8 @@ ns.Connection = function( sourceID,  targetID,  cWeight)
 
 
 //simple connection type -- from FloatFastConnection.cs
-ns.FastConnection = function(){};
-ns.FastConnection.prototype =
+cppnsNS.FastConnection = function(){};
+cppnsNS.FastConnection.prototype =
 {
         sourceNeuronIdx : 0,
         targetNeuronIdx : 0,
@@ -107,14 +105,14 @@ ns.FastConnection.prototype =
 };
 
 //simple neuron type
-ns.Neuron = function(actFn, neurType, theId){
+cppnsNS.Neuron = function(actFn, neurType, theId){
 
     var activationFn = actFn;
     var	neuronType = neurType;
     var	id = theId;
 
     var	outputValue;	// Output signal.
-    if(neuronType == ns.NeuronType.Bias)
+    if(neuronType == cppnsNS.NeuronType.Bias)
         outputValue = 1.0;
     else
         outputValue = 0.0;
@@ -141,7 +139,7 @@ ns.Neuron = function(actFn, neurType, theId){
     /// </summary>
     this.Recalc = function(){
     // No recalculation required for input or bias nodes.
-        if(neuronType==ns.NeuronType.Input || neuronType==ns.NeuronType.Bias)
+        if(neuronType==cppnsNS.NeuronType.Input || neuronType==cppnsNS.NeuronType.Bias)
             return;
 
         // Iterate the connections and total up the input signal from all of them.
@@ -150,7 +148,7 @@ ns.Neuron = function(actFn, neurType, theId){
         for(var i=0; i<loopBound; i++)
         {
             var connection = connectionList[i];
-            accumulator += connection.SourceNeuron.outputValue * connection.Weight;
+            accumulator += connection.SourceNeuron().OutputValue()* connection.Weight();
         }
 
         outputRecalc = activationFn.Calculate(accumulator);
@@ -158,27 +156,27 @@ ns.Neuron = function(actFn, neurType, theId){
 
     this.UseRecalculatedValue = function(){
         // No recalculation required for input or bias nodes.
-        if(neuronType==ns.NeuronType.Input || neuronType==ns.NeuronType.Bias)
+        if(neuronType==cppnsNS.NeuronType.Input || neuronType==cppnsNS.NeuronType.Bias)
             return;
 
         outputValue = outputRecalc;
     };
-}
+};
 
 //we need the basic framework for an abstract network
-ns.AbstractNetwork = function(neuronList){
+cppnsNS.AbstractNetwork = function(neuronList){
 
     this.inputNeuronList = []; //new NeuronList();
     this.outputNeuronList = [];//new NeuronList();
     this.LoadNeuronList(neuronList);
 };
-ns.AbstractNetwork.inheritsFrom(ns.INetwork );
+cppnsNS.AbstractNetwork.inheritsFrom(cppnsNS.INetwork );
 
-ns.AbstractNetwork.inputNeuronList = [];
-ns.AbstractNetwork.outputNeuronList = [];
-ns.AbstractNetwork.masterNeuronList = [];
+cppnsNS.AbstractNetwork.inputNeuronList = [];
+cppnsNS.AbstractNetwork.outputNeuronList = [];
+cppnsNS.AbstractNetwork.masterNeuronList = [];
 
-ns.AbstractNetwork.prototype.LoadNeuronList=function(neuronList){
+cppnsNS.AbstractNetwork.prototype.LoadNeuronList=function(neuronList){
     //can't load something that isn't there!
     if(!neuronList)
         return;
@@ -191,80 +189,80 @@ ns.AbstractNetwork.prototype.LoadNeuronList=function(neuronList){
     {
         var neuron = this.masterNeuronList[j];
 
-        switch(neuron.NeuronType)
+        switch(neuron.NeuronType())
         {
-            case ns.NeuronType.Input:
+            case cppnsNS.NeuronType.Input:
                 this.inputNeuronList.push(neuron);
                 break;
 
-            case ns.NeuronType.Output:
+            case cppnsNS.NeuronType.Output:
                 this.outputNeuronList.push(neuron);
                 break;
         }
     }
 };
 //Methods implemented from INetwork
-ns.AbstractNetwork.prototype.SetInputSignal = function(index, signalValue)
+cppnsNS.AbstractNetwork.prototype.SetInputSignal = function(index, signalValue)
 {
-    this.inputNeuronList[index].OutputValue = signalValue;
+    this.inputNeuronList[index].OutputValue(signalValue);// = signalValue;
 };
 
-ns.AbstractNetwork.prototype.SetInputSignals = function(signalArray)
+cppnsNS.AbstractNetwork.prototype.SetInputSignals = function(signalArray)
 {
     // For speed we don't bother with bounds checks.
     for(var i=0; i<signalArray.length; i++)
-        this.inputNeuronList[i].OutputValue = signalArray[i];
+        this.inputNeuronList[i].OutputValue(signalArray[i]);// = signalArray[i];
 };
 
-ns.AbstractNetwork.prototype.GetOutputSignal = function(index)
+cppnsNS.AbstractNetwork.prototype.GetOutputSignal = function(index)
 {
-    return this.outputNeuronList[index].OutputValue;
+    return this.outputNeuronList[index].OutputValue();
 };
 
-ns.AbstractNetwork.prototype.ClearSignals = function()
+cppnsNS.AbstractNetwork.prototype.ClearSignals = function()
 {
     var loopBound = this.masterNeuronList.length;
     for(var j=0; j<loopBound; j++)
     {
         var neuron = this.masterNeuronList[j];
-        if(neuron.NeuronType != ns.NeuronType.Bias)
-            neuron.OutputValue=0;
+        if(neuron.NeuronType() != cppnsNS.NeuronType.Bias)
+            neuron.OutputValue(0);
     }
 };
 
 //Here are the getters
-ns.AbstractNetwork.prototype.InputNeuronCount = function(){ return this.inputNeuronList.length; };
-ns.AbstractNetwork.prototype.OutputNeuronCount = function(){return this.outputNeuronList.length;};
-ns.AbstractNetwork.prototype.MasterNeuronList = function(){return this.masterNeuronList;};
+cppnsNS.AbstractNetwork.prototype.InputNeuronCount = function(){ return this.inputNeuronList.length; };
+cppnsNS.AbstractNetwork.prototype.OutputNeuronCount = function(){return this.outputNeuronList.length;};
+cppnsNS.AbstractNetwork.prototype.MasterNeuronList = function(){return this.masterNeuronList;};
 
-//Now the implementation of the CPPN -
+//Now the implementation of the CPPN
 
 
-ns.CPPN = function(neuronList){
+cppnsNS.CPPN = function(neuronList){
     //we call the base constructor with the context of this object
-    ns.AbstractNetwork.prototype.call(this, neuronList);
+    this.parent.constructor.call(this, neuronList);
 };
 
 //CPPN inherits from abstract network
-ns.CPPN.inheritsFrom(ns.AbstractNetwork);
+cppnsNS.CPPN.inheritsFrom(cppnsNS.AbstractNetwork);
 
-ns.CPPN.prototype.TotalNeuronCount = function(){return 0;};
+cppnsNS.CPPN.prototype.TotalNeuronCount = function(){return 0;};
 
-ns.CPPN.SingleStep = function()
+cppnsNS.CPPN.prototype.SingleStep = function()
 {
-    var loopBound = this.masterNeuronList.Count;
+    var loopBound = this.masterNeuronList.length;
     for(var j=0; j<loopBound; j++)
         this.masterNeuronList[j].Recalc();
 
-    for(var j=0; j<loopBound; j++)
-        this.masterNeuronList[j].UseRecalculatedValue();
+    for(var z=0; z<loopBound; z++)
+        this.masterNeuronList[z].UseRecalculatedValue();
 };
-ns.CPPN.MultipleSteps = function(numberOfSteps)
+cppnsNS.CPPN.prototype.MultipleSteps = function(numberOfSteps)
 {
     for(var i=0; i<numberOfSteps; i++)
         this.SingleStep();
 };
-ns.CPPN.RelaxNetwork = function(maxSteps,  maxAllowedSignalDelta)
+cppnsNS.CPPN.prototype.RelaxNetwork = function(maxSteps,  maxAllowedSignalDelta)
 {
     // Perform at least one step.
     this.SingleStep();
@@ -277,7 +275,7 @@ ns.CPPN.RelaxNetwork = function(maxSteps,  maxAllowedSignalDelta)
         isRelaxed=true;	// Assume true.
 
         // foreach syntax is 30% slower then this!
-        loopBound = this.masterNeuronList.Count;
+        loopBound = this.masterNeuronList.length;
         for(var j=0; j<loopBound; j++)
         {
             var neuron = this.masterNeuronList[j];
@@ -287,16 +285,16 @@ ns.CPPN.RelaxNetwork = function(maxSteps,  maxAllowedSignalDelta)
             // keep testing.
             if(isRelaxed)
             {
-                if(neuron.NeuronType == ns.NeuronType.Hidden || neuron.NeuronType == ns.NeuronType.Output)
+                if(neuron.NeuronType() == cppnsNS.NeuronType.Hidden || neuron.NeuronType() == cppnsNS.NeuronType.Output)
                 {
-                    if(neuron.OutputDelta > maxAllowedSignalDelta)
+                    if(neuron.OutputDelta() > maxAllowedSignalDelta)
                         isRelaxed=false;
                 }
             }
         }
 
-        for(var j=0; j<loopBound; j++)
-            this.masterNeuronList[j].UseRecalculatedValue();
+        for(var z=0; z<loopBound; z++)
+            this.masterNeuronList[z].UseRecalculatedValue();
     }
 
     return isRelaxed;
