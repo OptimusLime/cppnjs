@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0e844af-0f9b-4b08-8255-09e0d8eec09a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Support/Decoding.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ActivationFunctions.js" afterPath="$PROJECT_DIR$/ActivationFunctions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CPPN.js" afterPath="$PROJECT_DIR$/CPPN.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Maths.js" afterPath="$PROJECT_DIR$/Maths.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tests/CPPNTests.js" afterPath="$PROJECT_DIR$/Tests/CPPNTests.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tests/cppn.html" afterPath="$PROJECT_DIR$/Tests/cppn.html" />
     </list>
     <ignored path="CPPN.js.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,16 +27,7 @@
       <file leaf-file-name="Helpers.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Helpers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Maths.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Maths.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="2" selection-start="502" selection-end="502" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="2224" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -57,20 +42,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="funcunit_test.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Coding/WebLibraries/funcunit/demo/funcunit_test.js">
+      <file leaf-file-name="HelloWorld.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Coding/WebLibraries/box2Djs/Box2D/HelloWorld/HelloWorld.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="2" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
+            <state line="17" column="0" selection-start="897" selection-end="897" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CPPNTests.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Tests/CPPNTests.html">
+      <file leaf-file-name="b2TensorDampingController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Coding/WebLibraries/box2Djs/Contributions/Enhancements/Controllers/b2TensorDampingController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="30" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Coding/WebLibraries/box2Djs/Box2D/Testbed/Framework/Test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Testbed.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Coding/WebLibraries/box2Djs/Box2D/Testbed/Testbed.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,7 +83,7 @@
       <file leaf-file-name="cppn.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tests/cppn.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="42" selection-start="702" selection-end="702" vertical-scroll-proportion="-11.115385">
+            <state line="17" column="42" selection-start="702" selection-end="702" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -102,19 +107,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ActivationFunctions.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ActivationFunctions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ActivationFunctions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="6" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.4722222">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loadhack.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Support/loadhack.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="21" selection-start="35" selection-end="47" vertical-scroll-proportion="0.0">
+            <state line="36" column="100" selection-start="1121" selection-end="1121" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -243,8 +239,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -290,13 +286,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924107" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11966263" sideWeight="0.6707589" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11966263" sideWeight="0.6707589" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -306,6 +301,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924107" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -378,11 +374,6 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Coding/WebLibraries/funcunit/funcunit/scripts/run.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Coding/WebLibraries/funcunit/funcunit/funcunit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -391,11 +382,6 @@
     <entry file="file://$PROJECT_DIR$/Support/jkl-parsexml.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="153" column="0" selection-start="5708" selection-end="5721" vertical-scroll-proportion="-11.8" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Helpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Maths.js">
@@ -410,9 +396,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tests/CPPNTests.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="30" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="19" column="30" selection-start="621" selection-end="621" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Support/loadhack.js">
@@ -420,39 +404,56 @@
         <state line="4" column="21" selection-start="35" selection-end="47" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/cppn.html">
+    <entry file="file://$PROJECT_DIR$/Helpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="42" selection-start="702" selection-end="702" vertical-scroll-proportion="-11.115385">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="2224" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/CPPNTests.js">
+    <entry file="file://$PROJECT_DIR$/CPPN.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="0" selection-start="1460" selection-end="1460" vertical-scroll-proportion="0.0">
+        <state line="47" column="27" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Coding/WebLibraries/box2Djs/Box2D/HelloWorld/HelloWorld.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="0" selection-start="897" selection-end="897" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Coding/WebLibraries/box2Djs/Contributions/Enhancements/Controllers/b2TensorDampingController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Coding/WebLibraries/box2Djs/Box2D/Testbed/Framework/Test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/cppn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="42" selection-start="702" selection-end="702" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Support/Decoding.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="55" selection-start="2423" selection-end="2423" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="85" column="55" selection-start="2423" selection-end="2423" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CPPN.js">
+    <entry file="file://$PROJECT_DIR$/Tests/CPPNTests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="27" selection-start="1722" selection-end="1722" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="51" column="0" selection-start="1460" selection-end="1460" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ActivationFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="6" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.4722222">
-          <folding />
-        </state>
+        <state line="36" column="100" selection-start="1121" selection-end="1121" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Coding/WebLibraries/box2Djs/Box2D/Testbed/Testbed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
   </component>

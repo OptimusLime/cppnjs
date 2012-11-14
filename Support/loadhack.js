@@ -79,4 +79,4 @@ ensureParserExists = function()
             }
         }
     }
-}
+};
