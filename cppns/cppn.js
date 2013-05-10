@@ -41,6 +41,8 @@
         /// The number of output neurons.
         self.outputNeuronCount = outputNeuronCount;
 
+        //save the total neuron count for us
+        self.totalNeuronCount = totalNeuronCount;
 
         // For the following array, neurons are ordered with bias nodes at the head of the list,
         // then input nodes, then output nodes, and then hidden nodes in the array's tail.
@@ -386,6 +388,15 @@
         // This is no longer being calculated (for cycle detection)
         self.inActivation[currentNode] = false;
 
+//        console.log('Current node: ' + currentNode);
+//        console.log('ActivationFunctions: ');
+//        console.log(self.activationFunctions);
+//
+//        console.log('neuronSignals: ');
+//        console.log(self.neuronSignals);
+//
+//        console.log('neuronSignalsBeingProcessed: ');
+//        console.log(self.neuronSignalsBeingProcessed);
         // Set this signal after running it through the activation function
         self.neuronSignals[currentNode] = self.activationFunctions[currentNode].calculate(self.neuronSignalsBeingProcessed[currentNode]);
 //            parseFloat((self.activationFunctions[currentNode].calculate(parseFloat(self.neuronSignalsBeingProcessed[currentNode].toFixed(9)))).toFixed(9));
