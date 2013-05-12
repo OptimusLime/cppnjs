@@ -1,7 +1,7 @@
 (function(exports, selfBrowser, isBrowser){
 
     var utilities = isBrowser ? selfBrowser['utilities'] : require('../utility/utilities.js');
-    var neatActivationFunctions = isBrowser ? selfBrowser['neatActivationFunctions'] : require('./cppnActivationFunctions.js');
+    var cppnActivationFunctions = isBrowser ? selfBrowser['cppnActivationFunctions'] : require('./cppnActivationFunctions.js');
     var neatActivationFactory = exports;
 
     neatActivationFactory.Factory =
@@ -14,10 +14,10 @@
 
     neatActivationFactory.Factory.createActivationFunction = function(functionID)
     {
-        if(!neatActivationFunctions[functionID])
+        if(!cppnActivationFunctions[functionID])
             throw new Error("Activation Function doesn't exist!");
         // For now the function ID is the name of a class that implements IActivationFunction.
-        return new neatActivationFunctions[functionID]();
+        return new cppnActivationFunctions[functionID]();
 
     };
 
@@ -28,7 +28,7 @@
         {
 //            console.log('Creating: ' + functionID);
 //            console.log('ActivationFunctions: ');
-//            console.log(neatActivationFunctions);
+//            console.log(cppnActivationFunctions);
 
             activationFunction = neatActivationFactory.Factory.createActivationFunction(functionID);
             neatActivationFactory.Factory.functionTable[functionID] = activationFunction;
