@@ -2,8 +2,6 @@
 
     var cppnNode = exports;
 
-
-
     cppnNode.NodeType =
     {
         bias : "Bias",
