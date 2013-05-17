@@ -4,6 +4,15 @@
     var cppnActivationFunctions = isBrowser ? selfBrowser['cppnActivationFunctions'] : require('./cppnActivationFunctions.js');
     var neatActivationFactory = exports;
 
+    exports.CheckDependencies = function()
+    {
+        if(!isBrowser)
+            return;
+
+        utilities = isBrowser ? selfBrowser['utilities'] : require('../utility/utilities.js');
+        cppnActivationFunctions = isBrowser ? selfBrowser['cppnActivationFunctions'] : require('./cppnActivationFunctions.js');
+    };
+
     neatActivationFactory.Factory =
     {
     };

@@ -4,6 +4,14 @@
 
     var utilities = isBrowser ? selfBrowser['utilities'] : require('../utility/utilities.js');
 
+    exports.CheckDependencies = function()
+    {
+        if(!isBrowser)
+            return;
+
+        utilities = selfBrowser['utilities'];
+    };
+
     cppn.CPPN = function( biasNeuronCount,
                           inputNeuronCount,
                           outputNeuronCount,
