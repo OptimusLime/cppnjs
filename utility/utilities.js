@@ -163,6 +163,44 @@
 
         return outcomes;
     };
+    exports.RouletteWheel.selectXFromSmallObject = function(x, objects){
+        var ixs = [];
+        //works with objects with count or arrays with length
+        var gCount = objects.count === undefined ? objects.length : objects.count;
+
+        for(var i=0; i<gCount;i++)
+            ixs.push(i);
+
+        //how many do we need back? we need x back. So we must remove (# of objects - x) leaving ... x objects
+        for(var i=0; i < gCount -x; i++)
+        {
+            //remove random index
+            ixs.splice(exports.next(ixs.length),1);
+        }
+
+        return ixs;
+    };
+    exports.RouletteWheel.selectXFromLargeObject = function(x, objects)
+    {
+        var ixs = [];
+        var guesses = {};
+        var gCount = objects.count === undefined ? objects.length : objects.count;
+
+        //we make sure the number of requested objects is less than the object indices
+        x = Math.min(x, gCount);
+
+        for(var i=0; i<x; i++)
+        {
+            var guessIx = exports.next(gCount);
+            while(guesses[guessIx])
+                guessIx = exports.next(gCount);
+
+            guesses[guessIx] = true;
+            ixs.push(guessIx);
+        }
+
+        return ixs;
+    };
 
 
     //send in the object, and also whetehr or not this is nodejs

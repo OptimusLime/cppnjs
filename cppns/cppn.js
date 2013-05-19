@@ -308,9 +308,8 @@
     //we can dispense of this by accessing neuron signals directly
     cppn.CPPN.prototype.getOutputSignal = function(index)
     {
-        var self = this;
         // For speed we don't bother with bounds checks.
-        return self.neuronSignals[self.totalInputNeuronCount + index];
+        return this.neuronSignals[this.totalInputNeuronCount + index];
     };
 
     //we can dispense of this by accessing neuron signals directly
