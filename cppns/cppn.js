@@ -1,8 +1,13 @@
 (function(exports, selfBrowser, isBrowser){
 
     var cppn = exports;
+    var common = isBrowser ? selfBrowser['common'] : require('../cppnjs.js');
+    var utilities = common.loadLibraryFile('cppnjs', 'utilities');
 
-    var utilities = isBrowser ? selfBrowser['utilities'] : require('../utility/utilities.js');
+    cppn.CheckDependencies = function()
+    {
+        utilities = common.loadLibraryFile('cppnjs', 'utilities');
+    };
 
     cppn.CPPN = function( biasNeuronCount,
                           inputNeuronCount,
@@ -393,4 +398,4 @@
     };
 
     //send in the object, and also whetehr or not this is nodejs
-})(typeof exports === 'undefined'? this['cppn']={}: exports, this, typeof exports === 'undefined'? true : false);
+})(typeof exports === 'undefined'? this['cppnjs']['cppn']={}: exports, this, typeof exports === 'undefined'? true : false);

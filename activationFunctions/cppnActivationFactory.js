@@ -1,70 +1,79 @@
 (function(exports, selfBrowser, isBrowser){
 
-    var utilities = isBrowser ? selfBrowser['utilities'] : require('../utility/utilities.js');
-    var neatActivationFunctions = isBrowser ? selfBrowser['neatActivationFunctions'] : require('./cppnActivationFunctions.js');
-    var neatActivationFactory = exports;
+    var common = isBrowser ? selfBrowser['common'] : require('../cppnjs.js');
 
-    neatActivationFactory.Factory =
+    var utilities = common.loadLibraryFile('cppnjs', 'utilities');
+    var cppnActivationFunctions =  common.loadLibraryFile('cppnjs', 'cppnActivationFunctions');
+
+    var cppnActivationFactory = exports;
+
+    cppnActivationFactory.CheckDependencies = function()
+    {
+        utilities = common.loadLibraryFile('cppnjs', 'utilities');
+        cppnActivationFunctions =  common.loadLibraryFile('cppnjs', 'cppnActivationFunctions');
+    };
+
+    cppnActivationFactory.Factory =
     {
     };
 
-    neatActivationFactory.Factory.probabilities = [];
-    neatActivationFactory.Factory.functions = [];
-    neatActivationFactory.Factory.functionTable= {};
+    cppnActivationFactory.Factory.probabilities = [];
+    cppnActivationFactory.Factory.functions = [];
+    cppnActivationFactory.Factory.functionTable= {};
 
-    neatActivationFactory.Factory.createActivationFunction = function(functionID)
+    cppnActivationFactory.Factory.createActivationFunction = function(functionID)
     {
-        if(!neatActivationFunctions[functionID])
+        if(!cppnActivationFunctions[functionID])
             throw new Error("Activation Function doesn't exist!");
         // For now the function ID is the name of a class that implements IActivationFunction.
-        return new neatActivationFunctions[functionID]();
+        return new cppnActivationFunctions[functionID]();
 
     };
 
-    neatActivationFactory.Factory.getActivationFunction = function(functionID)
+    cppnActivationFactory.Factory.getActivationFunction = function(functionID)
     {
-        var activationFunction = neatActivationFactory.Factory.functionTable[functionID];
+        var activationFunction = cppnActivationFactory.Factory.functionTable[functionID];
         if(!activationFunction)
         {
 //            console.log('Creating: ' + functionID);
 //            console.log('ActivationFunctions: ');
-//            console.log(neatActivationFunctions);
+//            console.log(cppnActivationFunctions);
 
-            activationFunction = neatActivationFactory.Factory.createActivationFunction(functionID);
-            neatActivationFactory.Factory.functionTable[functionID] = activationFunction;
+            activationFunction = cppnActivationFactory.Factory.createActivationFunction(functionID);
+            cppnActivationFactory.Factory.functionTable[functionID] = activationFunction;
         }
         return activationFunction;
 
     };
 
-    neatActivationFactory.Factory.setProbabilities = function(oProbs)
+    cppnActivationFactory.Factory.setProbabilities = function(oProbs)
     {
-        neatActivationFactory.Factory.probabilities = [];//new double[probs.Count];
-        neatActivationFactory.Factory.functions = [];//new IActivationFunction[probs.Count];
+        cppnActivationFactory.Factory.probabilities = [];//new double[probs.Count];
+        cppnActivationFactory.Factory.functions = [];//new IActivationFunction[probs.Count];
         var counter = 0;
 
         for(var key in oProbs)
         {
-            neatActivationFactory.Factory.probabilities.push(oProbs[key]);
-            neatActivationFactory.Factory.functions.push(neatActivationFactory.Factory.getActivationFunction(key));
+            cppnActivationFactory.Factory.probabilities.push(oProbs[key]);
+            cppnActivationFactory.Factory.functions.push(cppnActivationFactory.Factory.getActivationFunction(key));
             counter++;
         }
 
     };
 
-    neatActivationFactory.Factory.defaultProbabilities = function()
+    cppnActivationFactory.Factory.defaultProbabilities = function()
     {
         var oProbs = {'BipolarSigmoid' :.25, 'Sine':.25, 'Gaussian':.25, 'Linear':.25};
-        neatActivationFactory.Factory.setProbabilities(oProbs);
+        cppnActivationFactory.Factory.setProbabilities(oProbs);
     };
-    neatActivationFactory.Factory.getRandomActivationFunction = function()
+    cppnActivationFactory.Factory.getRandomActivationFunction = function()
     {
-        if(neatActivationFactory.Factory.probabilities.length == 0)
-            neatActivationFactory.Factory.defaultProbabilities();
+        if(cppnActivationFactory.Factory.probabilities.length == 0)
+            cppnActivationFactory.Factory.defaultProbabilities();
 
-        return neatActivationFactory.Factory.functions[utilities.RouletteWheel.singleThrowArray(neatActivationFactory.Factory.probabilities)];
+        return cppnActivationFactory.Factory.functions[utilities.RouletteWheel.singleThrowArray(cppnActivationFactory.Factory.probabilities)];
     };
 
 
     //send in the object, and also whetehr or not this is nodejs
-})(typeof exports === 'undefined'? this['cppnActivationFactory']={}: exports, this, typeof exports === 'undefined'? true : false);
+})(typeof exports === 'undefined'? this['cppnjs']['cppnActivationFactory']={}: exports, this, typeof exports === 'undefined'? true : false);
