@@ -172,7 +172,6 @@
 
                     for(var script in libraries[library])
                     {
-
                         $.getScript(relLocation + libraries[library][script])
                             .done(function(scriptString) {
                                 scriptCount--;
