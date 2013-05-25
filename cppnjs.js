@@ -1,6 +1,7 @@
 //Use this as a way to load in the entire library
 (function(exports, selfBrowser, isBrowser){
 
+    var libraryName = 'cppnjs';
     var common;
 
     if(isBrowser)
@@ -15,7 +16,7 @@
         common = exports;
 
 
-    var cppnjsScripts =
+    var libraryScripts =
     {
         //load in cppn things
         //help first
@@ -38,10 +39,13 @@
 
         console.log('Loading script directories!');
 
-        cppnjsScripts = {};
+        libraryScripts = {};
 
         //we export our scripts!
-        exports.scripts = cppnjsScripts;
+        if(!common.scripts)
+            common.scripts = {};
+
+        exports.scripts[libraryName] = libraryScripts;
 
         var homeDirectory  = __dirname;
         var directoryCount = 0;
@@ -91,7 +95,7 @@
                     if(isJavascript(f))
                     {
                         var nojs = f.replace('.js','');
-                        cppnjsScripts[nojs] = builtDirectory + f
+                        libraryScripts[nojs] = builtDirectory + f
                     }
                 }
 
@@ -103,14 +107,14 @@
         recursiveReadDirectorySync(homeDirectory, '/');
 
         console.log('Scripts: ');
-        console.log(cppnjsScripts);
+        console.log(libraryScripts);
     }
     else
     {
         if(!common.libraries)
             common.libraries = {};
 
-        common.libraries['cppnjs'] = cppnjsScripts;
+        common.libraries[libraryName] = libraryScripts;
     }
 
     common.loadLibraryFile = function(library, script)
@@ -120,7 +124,7 @@
         {
             //if we haven't loaded this library, require it using our script objects
             if(!common[script])
-                common[script] = require('.' + cppnjsScripts[script]);
+                common[script] = require('.' + libraryScripts[script]);
 
             //otherwise return cached objects
             return common[script];

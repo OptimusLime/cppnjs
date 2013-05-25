@@ -8,7 +8,7 @@ describe('Testing loading of cppnjs in nodejs',function(){
     it('Loading components should work fine', function(done){
 
         //we should be able to load everything now
-        for(var script in common.scripts)
+        for(var script in common.scripts['cppnjs'])
         {
             var loadedScript = common.loadLibraryFile('cppnjs', script);
             (loadedScript === undefined).should.not.equal(true);
