@@ -4,7 +4,7 @@
     <list default="true" id="c0e844af-0f9b-4b08-8255-09e0d8eec09a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cppnjs.js" afterPath="$PROJECT_DIR$/cppnjs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/nodejsloadtest.js" afterPath="$PROJECT_DIR$/test/nodejsloadtest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/htmlTest.html" afterPath="$PROJECT_DIR$/test/htmlTest.html" />
     </list>
     <ignored path="CPPN.js.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cppnjs.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="cppnjs.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cppnjs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="36" selection-start="291" selection-end="291" vertical-scroll-proportion="0.23375">
+            <state line="30" column="28" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -71,10 +71,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="htmlTest.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="htmlTest.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/htmlTest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
+            <state line="10" column="34" selection-start="402" selection-end="402" vertical-scroll-proportion="0.21963824">
               <folding />
             </state>
           </provider>
@@ -141,10 +141,10 @@
         <option value="$PROJECT_DIR$/components/cppnNode.js" />
         <option value="$PROJECT_DIR$/cppns/cppn.js" />
         <option value="$PROJECT_DIR$/utility/utilities.js" />
-        <option value="$PROJECT_DIR$/test/htmlTest.html" />
         <option value="$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js" />
         <option value="$PROJECT_DIR$/test/nodejsloadtest.js" />
         <option value="$PROJECT_DIR$/cppnjs.js" />
+        <option value="$PROJECT_DIR$/test/htmlTest.html" />
       </list>
     </option>
   </component>
@@ -286,8 +286,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -470,6 +470,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cppns/cppn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="0" selection-start="2027" selection-end="2027" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
@@ -477,16 +484,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/htmlTest.html">
+    <entry file="file://$PROJECT_DIR$/utility/utilities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
+        <state line="181" column="6" selection-start="5787" selection-end="5787" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utility/utilities.js">
+    <entry file="file://$PROJECT_DIR$/test/nodejsloadtest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="181" column="6" selection-start="5787" selection-end="5787" vertical-scroll-proportion="0.0">
+        <state line="10" column="48" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -501,23 +508,16 @@
         <state line="7" column="0" selection-start="230" selection-end="383" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cppns/cppn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="2027" selection-end="2027" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/nodejsloadtest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="48" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cppnjs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="36" selection-start="291" selection-end="291" vertical-scroll-proportion="0.23375">
+        <state line="30" column="28" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/htmlTest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="34" selection-start="402" selection-end="402" vertical-scroll-proportion="0.21963824">
           <folding />
         </state>
       </provider>

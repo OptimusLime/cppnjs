@@ -15,6 +15,8 @@
 
             var loadLibraries = function()
             {
+                var library = 'cppnjs';
+
                 common.asyncLoadLibraries({'cppnjs': '../'}, function(err){
 
                     if(err)
@@ -23,38 +25,16 @@
                         return;
                     }
 
-                    var library = 'cppnjs';
-                    //we should now have cppnjs library all loaded!
-                    if(!globals[library]['cppnActivationFactory'])
-                        throw new Error("Failed browswer loading!");
-                    else
-                        console.log('Successful: cppnActivationFactory');
 
-                    if(!globals[library]['cppnActivationFunctions'])
-                        throw new Error("Failed browswer loading!");
-                    else
-                        console.log('Successful: cppnActivationFunctions');
+                    for(var script in common.scripts[library])
+                    {
+                        if(!globals[library][script])
+                            throw new Error("Failed browswer loading on script: " + script);
+                        else
+                            console.log('Successful: ' + script);
+                    }
 
-                    if(!globals[library]['cppnConnection'])
-                        throw new Error("Failed browswer loading!");
-                    else
-                        console.log('Successful: cppnConnection');
-
-                    if(!globals[library]['cppnNode'])
-                        throw new Error("Failed browswer loading!");
-                    else
-                        console.log('Successful: cppnNode');
-
-                    if(!globals[library]['cppn'])
-                        throw new Error("Failed browswer loading!");
-                    else
-                        console.log('Successful: cppn');
-
-                    if(!globals[library]['utilities'])
-                        throw new Error("Failed browswer utilities loading!");
-                    else
-                        console.log('Successful: utilities');
-
+                    //we should now have library all loaded!
                     if(common.isLoaded)
                         console.log('All loaded now!');
                     else

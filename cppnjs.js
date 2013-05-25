@@ -28,6 +28,12 @@
         'cppn' : '/cppns/cppn.js'
     };
 
+    //we export our scripts!
+    if(!common.scripts)
+        common.scripts = {};
+
+    common.scripts[libraryName] = libraryScripts;
+
 
     if(!isBrowser)
     {
@@ -41,11 +47,7 @@
 
         libraryScripts = {};
 
-        //we export our scripts!
-        if(!common.scripts)
-            common.scripts = {};
 
-        exports.scripts[libraryName] = libraryScripts;
 
         var homeDirectory  = __dirname;
         var directoryCount = 0;
