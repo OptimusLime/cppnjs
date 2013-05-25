@@ -125,11 +125,14 @@
         if(!isBrowser)
         {
             //if we haven't loaded this library, require it using our script objects
-            if(!common[script])
-                common[script] = require('.' + libraryScripts[script]);
+            if(!common[library])
+                common[library] = {};
+
+            if(!common[library][script])
+                common[library][script] = require('.' + common.scripts[library][script]);
 
             //otherwise return cached objects
-            return common[script];
+            return common[library][script];
         }
         else
         {
