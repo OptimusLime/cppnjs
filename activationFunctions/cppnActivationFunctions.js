@@ -1,6 +1,6 @@
 (function(exports){//, selfBrowser, isBrowser){
 
-    var neatActivationFunctions = exports;
+    var cppnActivationFunctions = exports;
 
     //implemented the following:
     //BipolarSigmoid
@@ -12,7 +12,7 @@
     //StepFunction
 
 
-    neatActivationFunctions.ActivationFunction = function(functionObj)
+    cppnActivationFunctions.ActivationFunction = function(functionObj)
     {
         var self = this;
         self.functionID = functionObj.functionID;
@@ -25,8 +25,8 @@
     };
 
 
-    neatActivationFunctions.BipolarSigmoid = function(){
-        return new neatActivationFunctions.ActivationFunction({
+    cppnActivationFunctions.BipolarSigmoid = function(){
+        return new cppnActivationFunctions.ActivationFunction({
             functionID: 'BipolarSigmoid' ,
             functionString: "2.0/(1.0 + exp(-4.9*inputSignal)) - 1.0",
             functionDescription: "bipolar steepend sigmoid",
@@ -37,8 +37,8 @@
         });
     };
 
-    neatActivationFunctions.PlainSigmoid = function(){
-        return new neatActivationFunctions.ActivationFunction({
+    cppnActivationFunctions.PlainSigmoid = function(){
+        return new cppnActivationFunctions.ActivationFunction({
             functionID: 'PlainSigmoid' ,
             functionString: "1.0/(1.0+(exp(-inputSignal)))",
             functionDescription: "Plain sigmoid [xrange -5.0,5.0][yrange, 0.0,1.0]",
@@ -49,8 +49,8 @@
         });
     };
 
-    neatActivationFunctions.Gaussian  = function(){
-        return new neatActivationFunctions.ActivationFunction({
+    cppnActivationFunctions.Gaussian  = function(){
+        return new cppnActivationFunctions.ActivationFunction({
             functionID:  'Gaussian',
             functionString: "2*e^(-(input*2.5)^2) - 1",
             functionDescription:"bimodal gaussian",
@@ -60,8 +60,8 @@
             }
         });
     };
-    neatActivationFunctions.Linear  = function(){
-        return new neatActivationFunctions.ActivationFunction({
+    cppnActivationFunctions.Linear  = function(){
+        return new cppnActivationFunctions.ActivationFunction({
             functionID:   'Linear',
             functionString: "Math.abs(x)",
             functionDescription:"Linear",
@@ -71,8 +71,8 @@
             }
         });
     };
-    neatActivationFunctions.NullFn  = function(){
-        return new neatActivationFunctions.ActivationFunction({
+    cppnActivationFunctions.NullFn  = function(){
+        return new cppnActivationFunctions.ActivationFunction({
             functionID:   'NullFn',
             functionString: "0",
             functionDescription: "returns 0",
@@ -82,8 +82,8 @@
             }
         });
     };
-    neatActivationFunctions.Sine  = function(){
-        return new neatActivationFunctions.ActivationFunction({
+    cppnActivationFunctions.Sine  = function(){
+        return new cppnActivationFunctions.ActivationFunction({
             functionID:   'Sine',
             functionString: "Sin(2*inputSignal)",
             functionDescription: "Sine function with doubled period",
@@ -94,8 +94,8 @@
          });
     };
 
-    neatActivationFunctions.StepFunction  = function(){
-        return new neatActivationFunctions.ActivationFunction({
+    cppnActivationFunctions.StepFunction  = function(){
+        return new cppnActivationFunctions.ActivationFunction({
             functionID:    'StepFunction',
             functionString: "x<=0 ? 0.0 : 1.0",
             functionDescription: "Step function [xrange -5.0,5.0][yrange, 0.0,1.0]",

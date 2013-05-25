@@ -9,6 +9,14 @@
         utilities = common.loadLibraryFile('cppnjs', 'utilities');
     };
 
+    exports.CheckDependencies = function()
+    {
+        if(!isBrowser)
+            return;
+
+        utilities = selfBrowser['utilities'];
+    };
+
     cppn.CPPN = function( biasNeuronCount,
                           inputNeuronCount,
                           outputNeuronCount,
@@ -46,6 +54,8 @@
         /// The number of output neurons.
         self.outputNeuronCount = outputNeuronCount;
 
+        //save the total neuron count for us
+        self.totalNeuronCount = totalNeuronCount;
 
         // For the following array, neurons are ordered with bias nodes at the head of the list,
         // then input nodes, then output nodes, and then hidden nodes in the array's tail.
@@ -303,9 +313,8 @@
     //we can dispense of this by accessing neuron signals directly
     cppn.CPPN.prototype.getOutputSignal = function(index)
     {
-        var self = this;
         // For speed we don't bother with bounds checks.
-        return self.neuronSignals[self.totalInputNeuronCount + index];
+        return this.neuronSignals[this.totalInputNeuronCount + index];
     };
 
     //we can dispense of this by accessing neuron signals directly
@@ -391,6 +400,15 @@
         // This is no longer being calculated (for cycle detection)
         self.inActivation[currentNode] = false;
 
+//        console.log('Current node: ' + currentNode);
+//        console.log('ActivationFunctions: ');
+//        console.log(self.activationFunctions);
+//
+//        console.log('neuronSignals: ');
+//        console.log(self.neuronSignals);
+//
+//        console.log('neuronSignalsBeingProcessed: ');
+//        console.log(self.neuronSignalsBeingProcessed);
         // Set this signal after running it through the activation function
         self.neuronSignals[currentNode] = self.activationFunctions[currentNode].calculate(self.neuronSignalsBeingProcessed[currentNode]);
 //            parseFloat((self.activationFunctions[currentNode].calculate(parseFloat(self.neuronSignalsBeingProcessed[currentNode].toFixed(9)))).toFixed(9));

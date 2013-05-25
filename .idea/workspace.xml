@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0e844af-0f9b-4b08-8255-09e0d8eec09a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cppnjs.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/htmlTest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/nodejsloadtest.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js" afterPath="$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js" afterPath="$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js" />
@@ -33,10 +30,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cppnjs.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="cppnjs.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cppnjs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="136" column="48" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.49">
+            <state line="136" column="48" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -45,7 +42,7 @@
       <file leaf-file-name="cppnActivationFactory.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="66" selection-start="190" selection-end="190" vertical-scroll-proportion="-2.72">
+            <state line="78" column="35" selection-start="3013" selection-end="3013" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -72,7 +69,7 @@
       <file leaf-file-name="cppnActivationFunctions.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="11" selection-start="2802" selection-end="2802" vertical-scroll-proportion="0.0">
+            <state line="3" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -81,16 +78,16 @@
       <file leaf-file-name="htmlTest.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/htmlTest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="-5.8846154">
+            <state line="9" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utilities.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="utilities.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/utility/utilities.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
+            <state line="15" column="0" selection-start="391" selection-end="391" vertical-scroll-proportion="-3.3684847">
               <folding />
             </state>
           </provider>
@@ -146,12 +143,12 @@
         <option value="$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js" />
         <option value="$PROJECT_DIR$/components/cppnConnection.js" />
         <option value="$PROJECT_DIR$/components/cppnNode.js" />
-        <option value="$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js" />
         <option value="$PROJECT_DIR$/cppns/cppn.js" />
         <option value="$PROJECT_DIR$/utility/utilities.js" />
         <option value="$PROJECT_DIR$/cppnjs.js" />
         <option value="$PROJECT_DIR$/test/htmlTest.html" />
         <option value="$PROJECT_DIR$/test/nodejsloadtest.js" />
+        <option value="$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js" />
       </list>
     </option>
   </component>
@@ -186,6 +183,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -276,16 +283,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -293,8 +290,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -302,7 +299,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node JS" working-dir="$PROJECT_DIR$">
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node JS" working-dir="$PROJECT_DIR$" coffeescript-run="false">
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -453,9 +450,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/cppnTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="88" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="88" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/cppnNode.js">
@@ -465,16 +460,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/activationTest.js">
+    <entry file="file://$PROJECT_DIR$/test/htmlTest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="230" selection-end="383" vertical-scroll-proportion="0.0">
+        <state line="9" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nodejsloadtest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="3" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/testfunctions.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/activationTest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="230" selection-end="383" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cppnjs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="136" column="48" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="78" column="35" selection-start="3013" selection-end="3013" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -482,20 +508,6 @@
     <entry file="file://$PROJECT_DIR$/components/cppnConnection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="22" selection-start="53" selection-end="67" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="66" selection-start="190" selection-end="190" vertical-scroll-proportion="-2.72">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="11" selection-start="2802" selection-end="2802" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -509,28 +521,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utility/utilities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/htmlTest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="338" selection-end="338" vertical-scroll-proportion="-5.8846154">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/nodejsloadtest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="3" selection-start="529" selection-end="529" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cppnjs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="136" column="48" selection-start="4077" selection-end="4077" vertical-scroll-proportion="0.49">
+        <state line="15" column="0" selection-start="391" selection-end="391" vertical-scroll-proportion="-3.3684847">
           <folding />
         </state>
       </provider>

@@ -42,10 +42,10 @@
         self.weight = cWeight;
 
         self.signal =0;
-        self.A =0;
-        self.B =0;
-        self.C =0;
-        self.D =0;
+        self.a =0;
+        self.b =0;
+        self.c =0;
+        self.d =0;
         self.modConnection=0;
         self.learningRate=0;
 
