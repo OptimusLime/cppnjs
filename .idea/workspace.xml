@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0e844af-0f9b-4b08-8255-09e0d8eec09a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cppnjs.js" afterPath="$PROJECT_DIR$/cppnjs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/htmlTest.html" afterPath="$PROJECT_DIR$/test/htmlTest.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/nodejsloadtest.js" afterPath="$PROJECT_DIR$/test/nodejsloadtest.js" />
     </list>
     <ignored path="CPPN.js.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,10 +69,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="htmlTest.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="htmlTest.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/htmlTest.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="34" selection-start="402" selection-end="402" vertical-scroll-proportion="0.21963824">
+            <state line="10" column="34" selection-start="402" selection-end="402" vertical-scroll-proportion="-3.3333333">
               <folding />
             </state>
           </provider>
@@ -89,10 +87,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nodejsloadtest.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="nodejsloadtest.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/nodejsloadtest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="48" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
+            <state line="14" column="71" selection-start="486" selection-end="486" vertical-scroll-proportion="0.28848484">
               <folding />
             </state>
           </provider>
@@ -142,9 +140,9 @@
         <option value="$PROJECT_DIR$/cppns/cppn.js" />
         <option value="$PROJECT_DIR$/utility/utilities.js" />
         <option value="$PROJECT_DIR$/activationFunctions/cppnActivationFactory.js" />
-        <option value="$PROJECT_DIR$/test/nodejsloadtest.js" />
         <option value="$PROJECT_DIR$/cppnjs.js" />
         <option value="$PROJECT_DIR$/test/htmlTest.html" />
+        <option value="$PROJECT_DIR$/test/nodejsloadtest.js" />
       </list>
     </option>
   </component>
@@ -491,13 +489,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/nodejsloadtest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="48" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/testfunctions.json">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -517,7 +508,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/htmlTest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="34" selection-start="402" selection-end="402" vertical-scroll-proportion="0.21963824">
+        <state line="10" column="34" selection-start="402" selection-end="402" vertical-scroll-proportion="-3.3333333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/nodejsloadtest.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="71" selection-start="486" selection-end="486" vertical-scroll-proportion="0.28848484">
           <folding />
         </state>
       </provider>
