@@ -32,8 +32,6 @@
     if(!common.scripts)
         common.scripts = {};
 
-    common.scripts[libraryName] = libraryScripts;
-
 
     if(!isBrowser)
     {
@@ -41,13 +39,7 @@
         var fs = require('fs'),
             path = require('path');
 
-//        fs.readFile(path.resolve(__dirname, 'settings.json'), 'UTF-8', callback);
-
-        console.log('Loading script directories!');
-
         libraryScripts = {};
-
-
 
         var homeDirectory  = __dirname;
         var directoryCount = 0;
@@ -88,7 +80,7 @@
                         //we should make sure we're not in our .gitignore list!
                     if(!shouldIgnore(f))
                     {
-                        recursiveReadDirectorySync(f, builtDirectory + f + '/', finished);
+                        recursiveReadDirectorySync(path.resolve(directoryPath, f), builtDirectory + f + '/', finished);
                     }
                 }
                 else
@@ -107,9 +99,6 @@
         };
         //we load up our libraries synchronously when we first start
         recursiveReadDirectorySync(homeDirectory, '/');
-
-        console.log('Scripts: ');
-        console.log(libraryScripts);
     }
     else
     {
@@ -118,6 +107,9 @@
 
         common.libraries[libraryName] = libraryScripts;
     }
+
+    common.scripts[libraryName] = libraryScripts;
+
 
     common.loadLibraryFile = function(library, script)
     {
