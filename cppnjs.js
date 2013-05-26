@@ -111,33 +111,36 @@
     common.scripts[libraryName] = libraryScripts;
 
 
-    common.loadLibraryFile = function(library, script)
+    if(!common.loadLibraryFile)
     {
-        //we're in nodejs
-        if(!isBrowser)
+        common.loadLibraryFile = function(library, script)
         {
-            //if we haven't loaded this library, require it using our script objects
-            if(!common[library])
-                common[library] = {};
+            //we're in nodejs
+            if(!isBrowser)
+            {
+                //if we haven't loaded this library, require it using our script objects
+                if(!common[library])
+                    common[library] = {};
 
-            if(!common[library][script])
-                common[library][script] = require('.' + common.scripts[library][script]);
+                if(!common[library][script])
+                    common[library][script] = require('.' + common.scripts[library][script]);
 
-            //otherwise return cached objects
-            return common[library][script];
-        }
-        else
-        {
-            //we assume you've called async load libraries, in which case if you didn't we fail silently
-            //better quicker than slower, only need 1 call to load library
-            if(!selfBrowser[library])
-                return undefined;
+                //otherwise return cached objects
+                return common[library][script];
+            }
+            else
+            {
+                //we assume you've called async load libraries, in which case if you didn't we fail silently
+                //better quicker than slower, only need 1 call to load library
+                if(!selfBrowser[library])
+                    return undefined;
 
-            //easy, return the library and script from this object
-            //might be undefined, but that will be handled later anyways
-            return selfBrowser[library][script];
-        }
-    };
+                //easy, return the library and script from this object
+                //might be undefined, but that will be handled later anyways
+                return selfBrowser[library][script];
+            }
+        };
+    }
 
     if(!common.asyncLoadLibraries)
     {
@@ -170,8 +173,11 @@
                     }
 
 
+
                     for(var script in libraries[library])
                     {
+                        console.log('Fetching: ' + library + ' - ' + script);
+
                         $.getScript(relLocation + libraries[library][script])
                             .done(function(scriptString) {
                                 scriptCount--;

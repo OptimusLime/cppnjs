@@ -10,6 +10,7 @@
     //NullFn
     //Sine
     //StepFunction
+    //Cos
 
 
     cppnActivationFunctions.ActivationFunction = function(functionObj)
@@ -93,6 +94,19 @@
             }
          });
     };
+
+    cppnActivationFunctions.Cos  = function(){
+        return new cppnActivationFunctions.ActivationFunction({
+            functionID:   'Cos',
+            functionString: "Cos(2*inputSignal)",
+            functionDescription: "Cosine function with doubled period",
+            functionCalculate: function(inputSignal)
+            {
+                return Math.cos(2*inputSignal);
+            }
+        });
+    };
+
 
     cppnActivationFunctions.StepFunction  = function(){
         return new cppnActivationFunctions.ActivationFunction({
