@@ -374,6 +374,7 @@
             // If this node is currently being activated then we have reached a cycle, or recurrant connection. Use the previous activation in this case
             if (self.inActivation[crntAdjNode])
             {
+                console.log('using last activation!');
                 self.neuronSignalsBeingProcessed[currentNode] += self.lastActivation[crntAdjNode]*self.adjacentMatrix[crntAdjNode][currentNode];
 //                    parseFloat(
 //                    parseFloat(self.lastActivation[crntAdjNode].toFixed(9)) * parseFloat(self.adjacentMatrix[crntAdjNode][currentNode].toFixed(9)).toFixed(9));
@@ -414,6 +415,206 @@
 //            parseFloat((self.activationFunctions[currentNode].calculate(parseFloat(self.neuronSignalsBeingProcessed[currentNode].toFixed(9)))).toFixed(9));
 
     };
+
+
+    cppn.CPPN.prototype.isRecursive = function()
+    {
+        var self = this;
+
+        //if we're a hidden/output node (nodeid >= totalInputcount), and we connect to an input node (nodeid <= self.totalInputcount) -- it's recurrent!
+        //if we are a self connection, duh we are recurrent
+        for(var c=0; c< self.connections.length; c++)
+            if((self.connections[c].sourceIdx >= self.totalInputNeuronCount
+                && self.connections[c].targetIdx < self.totalInputNeuronCount)
+                || self.connections[c].sourceIdx == self.connections[c].targetIdx
+                )
+                return true;
+
+        self.recursed = [];
+        self.inRecursiveCheck = [];
+
+
+        for(var i=0; i < self.neuronSignals.length; i++)
+        {
+
+            self.recursed.push((i < self.totalInputNeuronCount) ? true : false);
+            self.inRecursiveCheck.push(false);
+        }
+
+        // Get each output node activation recursively
+        // NOTE: This is an assumption that genomes have started minimally, and the output nodes lie sequentially after the input nodes
+        for (var i = 0; i < self.outputNeuronCount; i++){
+            if(self.recursiveCheckRecursive(self.totalInputNeuronCount + i))
+            {
+//                console.log('Returned one!');
+                return true;
+
+            }
+        }
+
+        return false;
+
+    };
+
+    cppn.CPPN.prototype.recursiveCheckRecursive = function(currentNode)
+    {
+        var self = this;
+
+
+//        console.log('Self recursed : '+ currentNode + ' ? ' +  self.recursed[currentNode]);
+
+//        console.log('Checking: ' + currentNode)
+        //  If we've reached an input node we return since the signal is already set
+        if (self.recursed[currentNode])
+        {
+            self.inRecursiveCheck[currentNode] = false;
+            return false;
+        }
+
+        // Mark that the node is currently being calculated
+        self.inRecursiveCheck[currentNode] = true;
+
+            // Adjacency list in reverse holds incoming connections, go through each one and activate it
+            for (var i = 0; i < self.reverseAdjacentList[currentNode].length; i++)
+            {
+                var crntAdjNode = self.reverseAdjacentList[currentNode][i];
+
+                //{ Region recurrant connection handling - not applicable in our implementation
+                // If this node is currently being activated then we have reached a cycle, or recurrant connection. Use the previous activation in this case
+                if (self.inRecursiveCheck[crntAdjNode])
+                {
+                    self.inRecursiveCheck[currentNode] = false;
+                    return true;
+                }
+
+                // Otherwise proceed as normal
+                else
+                {
+                    var verifiedRecursive;
+                    // Recurse if this neuron has not been activated yet
+                    if (!self.recursed[crntAdjNode])
+                        verifiedRecursive = self.recursiveCheckRecursive(crntAdjNode);
+
+                    if(verifiedRecursive)
+                        return true;
+                }
+                //} endregion
+            }
+
+            // Mark this neuron as completed
+            self.recursed[currentNode] = true;
+
+            // This is no longer being calculated (for cycle detection)
+            self.inRecursiveCheck[currentNode] = false;
+
+            return false;
+    };
+
+
+    cppn.CPPN.prototype.recursiveEnclosure = function(){
+
+        var self = this;
+
+        var functions = [];
+        self.inEnclose = [];
+
+        // Initialize boolean arrays and set the last activation signal, but only if it isn't an input (these have already been set when the input is activated)
+        for (var i = 0; i < self.neuronSignals.length; i++)
+        {
+            // Set as activated if i is an input node, otherwise ensure it is unactivated (false)
+            self.inEnclose.push(false);
+        }
+
+        var inputs = [];
+
+        for(var i=self.biasNeuronCount; i < self.totalInputNeuronCount; i++)
+            inputs.push('x' + i);
+
+
+        // Get each output node activation recursively
+        // NOTE: This is an assumption that genomes have started minimally, and the output nodes lie sequentially after the input nodes
+        for (var i = 0; i < self.outputNeuronCount; i++){
+            var usedInputs = [];
+            var fString = self.beginningFunction()
+                 + self.recursiveEncloseNode(self.totalInputNeuronCount + i);
+
+            for(var ins =0; ins < inputs.length; ins++)
+            {
+               if(fString.indexOf(inputs[ins]) !== -1)
+               {
+                   usedInputs.push(inputs[ins]);
+               }
+            }
+
+            functions.push({inputs: usedInputs, functionString: fString, function: new Function(inputs, fString)});
+        }
+        return functions;
+
+    };
+    cppn.CPPN.prototype.beginningFunction = function()
+    {
+        var biasString = '';
+        for(var b=0; b < this.biasNeuronCount; b++)
+            biasString += 'var x' + b + ' = 1;';
+
+        //mwahahahaha - set our bias object!
+        return biasString + 'return ';
+
+    };
+    cppn.CPPN.prototype.doesContain = function(arr, obj)
+    {
+        for(var i=0; i < arr.length; i++)
+        {
+            if(arr[i] === obj)
+                return true;
+        }
+        return false;
+    }
+    cppn.CPPN.prototype.recursiveEncloseNode = function(currentNode)
+    {
+        var self = this;
+
+        if(currentNode < self.totalInputNeuronCount)
+            return "x" + currentNode;
+
+        self.inEnclose[currentNode] = true;
+
+        var compiledFunction = '';
+
+        // Adjacency list in reverse holds incoming connections, go through each one and activate it
+        for (var i = 0; i < self.reverseAdjacentList[currentNode].length; i++)
+        {
+            var crntAdjNode = self.reverseAdjacentList[currentNode][i];
+
+            if(self.inEnclose[crntAdjNode])
+            {
+                //don't enclose this node, since we've detected a loop here, abandon it!
+                throw new Error("Method not built for recurrent networks!")
+            }
+
+            var recursedFunction = self.recursiveEncloseNode(crntAdjNode);
+
+            //if wer're non-empty, add some weigths and what have you!
+            if(recursedFunction !== '')
+                compiledFunction +=  (i === 0 ? '(' : ' + ') + self.adjacentMatrix[crntAdjNode][currentNode] + '*' + recursedFunction;
+        }
+
+        //if we're empty, we're empty! We don't go no where, derrrr
+        if(compiledFunction === '')
+            compiledFunction = '0.0';
+        else
+            compiledFunction += ')';
+
+        self.inEnclose[currentNode] = false;
+
+        //otherwise, return our object activated
+        return self.activationFunctions[currentNode].enclose(compiledFunction);
+    };
+
+
+
+
+
 
     //send in the object, and also whetehr or not this is nodejs
 })(typeof exports === 'undefined'? this['cppnjs']['cppn']={}: exports, this, typeof exports === 'undefined'? true : false);
