@@ -536,7 +536,8 @@
         for (var i = 0; i < self.outputNeuronCount; i++){
             var usedInputs = [];
             var fString = self.beginningFunction()
-                 + self.recursiveEncloseNode(self.totalInputNeuronCount + i);
+                 + self.recursiveEncloseNode(self.totalInputNeuronCount + i)
+                + ';';
 
             for(var ins =0; ins < inputs.length; ins++)
             {
@@ -555,7 +556,7 @@
     {
         var biasString = '';
         for(var b=0; b < this.biasNeuronCount; b++)
-            biasString += 'var x' + b + ' = 1;';
+            biasString += 'var x' + b + ' = 1.0;';
 
         //mwahahahaha - set our bias object!
         return biasString + 'return ';
@@ -595,8 +596,17 @@
             var recursedFunction = self.recursiveEncloseNode(crntAdjNode);
 
             //if wer're non-empty, add some weigths and what have you!
-            if(recursedFunction !== '')
-                compiledFunction +=  (i === 0 ? '(' : ' + ') + self.adjacentMatrix[crntAdjNode][currentNode] + '*' + recursedFunction;
+            if(recursedFunction !== ''){
+
+                var weight = self.adjacentMatrix[crntAdjNode][currentNode];
+                //we have a whole number weight!
+                if(Math.round(weight) === weight)
+                    weight = '' + weight + '.0';
+                else
+                    weight = '' + weight;
+
+                compiledFunction +=  (i === 0 ? '(' : ' + ') + weight + '*' + recursedFunction;
+            }
         }
 
         //if we're empty, we're empty! We don't go no where, derrrr

@@ -69,7 +69,7 @@
             },
             functionEnclose: function(stringToEnclose)
             {
-                return "(2 * Math.exp(-Math.pow(" + stringToEnclose + "* 2.5, 2)) - 1)";
+                return "(2.0 * Math.exp(-Math.pow(" + stringToEnclose + "* 2.5, 2.0)) - 1.0)";
             }
         });
     };
@@ -114,7 +114,7 @@
             },
             functionEnclose: function(stringToEnclose)
             {
-                return "(Math.sin(2*" + stringToEnclose + "))";
+                return "(Math.sin(2.0*" + stringToEnclose + "))";
             }
         });
     };
