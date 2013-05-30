@@ -103,7 +103,7 @@
             }
         });
     };
-    cppnActivationFunctions.Sine  = function(){
+    cppnActivationFunctions.Sine2  = function(){
         return new cppnActivationFunctions.ActivationFunction({
             functionID:   'Sine',
             functionString: "Sin(2*inputSignal)",
@@ -115,6 +115,22 @@
             functionEnclose: function(stringToEnclose)
             {
                 return "(Math.sin(2.0*" + stringToEnclose + "))";
+            }
+        });
+    };
+
+    cppnActivationFunctions.Sine  = function(){
+        return new cppnActivationFunctions.ActivationFunction({
+            functionID:   'Sine',
+            functionString: "Sin(2*inputSignal)",
+            functionDescription: "Sine function with doubled period",
+            functionCalculate: function(inputSignal)
+            {
+                return Math.sin(inputSignal);
+            },
+            functionEnclose: function(stringToEnclose)
+            {
+                return "(Math.sin(" + stringToEnclose + "))";
             }
         });
     };
