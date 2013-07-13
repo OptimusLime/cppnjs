@@ -105,7 +105,7 @@
     };
     cppnActivationFunctions.Sine2  = function(){
         return new cppnActivationFunctions.ActivationFunction({
-            functionID:   'Sine',
+            functionID:   'Sine2',
             functionString: "Sin(2*inputSignal)",
             functionDescription: "Sine function with doubled period",
             functionCalculate: function(inputSignal)
@@ -122,8 +122,8 @@
     cppnActivationFunctions.Sine  = function(){
         return new cppnActivationFunctions.ActivationFunction({
             functionID:   'Sine',
-            functionString: "Sin(2*inputSignal)",
-            functionDescription: "Sine function with doubled period",
+            functionString: "Sin(inputSignal)",
+            functionDescription: "Sine function with normal period",
             functionCalculate: function(inputSignal)
             {
                 return Math.sin(inputSignal);
