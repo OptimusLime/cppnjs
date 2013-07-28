@@ -54,6 +54,10 @@ describe('Testing cppns against a known working file',function(){
                 var activationFunctions = [];
                 for(var af =0; af < nodesAndConnections.activationFunctions.length; af++)
                 {
+                    //old sine functions have double period == sine2
+                    if(nodesAndConnections.activationFunctions[af].FunctionId == 'Sine')
+                        nodesAndConnections.activationFunctions[af].FunctionId = 'Sine2';
+
                     activationFunctions.push(
                         cppnActivationFactory.Factory.getActivationFunction(nodesAndConnections.activationFunctions[af].FunctionId));
                 }

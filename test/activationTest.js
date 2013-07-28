@@ -26,6 +26,10 @@ describe('Testing activations against a known working file',function(){
                 var functionJSON = testFunctions[i];
 
                 var functionID = functionJSON['functionID'];
+
+                //old sine functions have double period == sine2
+                if(functionID == 'Sine')
+                    functionID = 'Sine2';
 //                console.log('Testing: ' + functionID);
 
                 var actFunction = cppnActivationFactory.Factory.getActivationFunction(functionID);
