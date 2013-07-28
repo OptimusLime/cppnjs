@@ -1,7 +1,18 @@
 {
   "name": "cppn",
-  "description": "CPPN tests with Mocha",
-  "version": "0.0.1",
+  "description": "Compositional Pattern Producing Networks (CPPN), a form of Artificial Neural Network with differing activation functions, implemented in Javascript with Mocha tests for verification",
+  "keywords": ["Neural Networks", "ANN", "CPPN", "NEAT"],
+  "author" : { "name": "Paul Szerlip",
+                "email": "Paul.Szerlip@cs.ucf.edu",
+                "url": "http://designforcode.com/" },
+  "version": "0.1.1-8",
+  "main":"cppnjs.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OptimusLime/CPPN.js.git"
+  },
+  "bugs" : "https://github.com/OptimusLime/CPPN.js/issues",
+  "license":"MIT",
   "private": true,
   "dependencies": {
     "mocha": "1.1.x",
