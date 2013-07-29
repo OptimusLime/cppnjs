@@ -9,9 +9,9 @@
   "main":"cppnjs.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OptimusLime/CPPN.js.git"
+    "url": "https://github.com/OptimusLime/cppnjs.git"
   },
-  "bugs" : "https://github.com/OptimusLime/CPPN.js/issues",
+  "bugs" : "https://github.com/OptimusLime/cppnjs/issues",
   "license":"MIT",
   "private": true,
   "dependencies": {
