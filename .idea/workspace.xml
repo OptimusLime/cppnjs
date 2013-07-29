@@ -6,10 +6,11 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375031018672" ignored="false" />
     <file path="/.gitignore" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375031030975" ignored="false" />
-    <file path="$PROJECT_DIR$/../neatjs/package.json" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375116409024" ignored="false" />
+    <file path="$PROJECT_DIR$/../neatjs/package.json" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375117082757" ignored="false" />
     <file path="/package.json" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375116331677" ignored="false" />
     <file path="$PROJECT_DIR$/../neatjs/.npmignore" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375116293645" ignored="false" />
     <file path="/.npmignore" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375116474348" ignored="false" />
+    <file path="$PROJECT_DIR$/../neatjs/npm-debug.log" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375117082371" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +51,7 @@
       <file leaf-file-name=".npmignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.npmignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="6" selection-start="12" selection-end="12" vertical-scroll-proportion="0.021656051">
+            <state line="7" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="0.15159236">
               <folding />
             </state>
           </provider>
@@ -472,7 +473,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.npmignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="6" selection-start="12" selection-end="12" vertical-scroll-proportion="0.021656051">
+        <state line="7" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="0.15159236">
           <folding />
         </state>
       </provider>

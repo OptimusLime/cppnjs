@@ -13,7 +13,6 @@
   },
   "bugs" : "https://github.com/OptimusLime/cppnjs/issues",
   "license":"MIT",
-  "private": true,
   "dependencies": {
     "mocha": "1.1.x",
     "should": "1.1.x"
