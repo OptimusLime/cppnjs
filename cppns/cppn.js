@@ -374,7 +374,7 @@
             // If this node is currently being activated then we have reached a cycle, or recurrant connection. Use the previous activation in this case
             if (self.inActivation[crntAdjNode])
             {
-                console.log('using last activation!');
+                //console.log('using last activation!');
                 self.neuronSignalsBeingProcessed[currentNode] += self.lastActivation[crntAdjNode]*self.adjacentMatrix[crntAdjNode][currentNode];
 //                    parseFloat(
 //                    parseFloat(self.lastActivation[crntAdjNode].toFixed(9)) * parseFloat(self.adjacentMatrix[crntAdjNode][currentNode].toFixed(9)).toFixed(9));
