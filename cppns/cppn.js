@@ -659,6 +659,14 @@
         // NOTE: This is an assumption that genomes have started minimally, and the output nodes lie sequentially after the input nodes
         for (var i = 0; i < self.outputNeuronCount; i++){
 
+//            for (var m = 0; m < self.nEnclosed.length; m++)
+//            {
+//                // Set as activated if i is an input node, otherwise ensure it is unactivated (false)
+//                self.bAlreadyEnclosed[m] = (m < self.totalInputNeuronCount) ? true : false;
+//                self.inEnclosure[m] = false;
+//            }
+
+
             self.nrEncloseNode(self.totalInputNeuronCount + i);
 
         }
@@ -666,6 +674,8 @@
 
         //now grab our ordered objects
         var orderedObjects = self.recursiveCountThings();
+
+//        console.log(orderedObjects);
 
         //now let's build our functions
         var nodeFunctions = {};
@@ -740,6 +750,7 @@
 //        console.log('Checking: ' + currentNode);
 //        console.log('Total: ');
 //        console.log(self.totalInputNeuronCount);
+
 
         if (currentNode < self.totalInputNeuronCount)
         {
@@ -844,10 +855,16 @@
                 // Mark that the node is currently being calculated
                 inNode[currentNode] = true;
 
+                var recurse = {};
+
                 // Adjacency list in reverse holds incoming connections, go through each one and activate it
                 for (var i = 0; i < self.reverseAdjacentList[currentNode].length; i++)
                 {
                     var crntAdjNode = self.reverseAdjacentList[currentNode][i];
+
+
+                    recurse[i] = (nodeCount[crntAdjNode] < nodeCount[currentNode] + 1);
+
                     nodeCount[crntAdjNode] = Math.max(nodeCount[crntAdjNode], nodeCount[currentNode] + 1);
 
                 }
@@ -856,8 +873,10 @@
                 {
                     var crntAdjNode = self.reverseAdjacentList[currentNode][i];
 
-                    // Recurse on it! -- already marked above
-                    recurseNode(crntAdjNode);
+                    if(recurse[i])
+                        // Recurse on it! -- already marked above
+                        recurseNode(crntAdjNode);
+
                 }
 
     //            nodeCount[currentNode] = nodeCount[currentNode] + 1;
