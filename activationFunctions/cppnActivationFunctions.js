@@ -37,7 +37,7 @@
             },
             functionEnclose: function(stringToEnclose)
             {
-                return "((2.0 / (1.0 + Math.exp(-4.9 *" + stringToEnclose + "))) - 1.0)";
+                return "((2.0 / (1.0 + Math.exp(-4.9 *(" + stringToEnclose + ")))) - 1.0)";
             }
         });
     };
@@ -53,7 +53,7 @@
             },
             functionEnclose: function(stringToEnclose)
             {
-                return "(1.0/(1.0+(Math.exp(-" + stringToEnclose + "))))";
+                return "(1.0/(1.0+(Math.exp(-1.0*(" + stringToEnclose + ")))))";
             }
         });
     };
@@ -114,7 +114,7 @@
             },
             functionEnclose: function(stringToEnclose)
             {
-                return "(Math.sin(2.0*" + stringToEnclose + "))";
+                return "(Math.sin(2.0*(" + stringToEnclose + ")))";
             }
         });
     };
@@ -149,7 +149,7 @@
             },
             functionEnclose: function(stringToEnclose)
             {
-                return "((" + stringToEnclose + ' <= 0.0) ? 0.0 : 1.0)';
+                return "(((" + stringToEnclose + ') <= 0.0) ? 0.0 : 1.0)';
             }
         });
     };

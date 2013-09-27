@@ -589,6 +589,16 @@
 
             if(self.inEnclose[crntAdjNode])
             {
+                console.log('Current and recursive: ');
+                console.log(self.reverseAdjacentList[currentNode]);
+                console.log(self.isRecursive());
+                console.log(self);
+
+                console.log('Did hit recursive?')
+                self.clearSignals();
+                self.setInputSignals([1.0,1.0,1.0]);
+                self.recursiveActivation();
+                console.log('in between thse?')
                 //don't enclose this node, since we've detected a loop here, abandon it!
                 throw new Error("Method not built for recurrent networks!")
             }
@@ -615,13 +625,397 @@
         else
             compiledFunction += ')';
 
-        self.inEnclose[currentNode] = false;
+//        self.inEnclose[currentNode] = false;
 
         //otherwise, return our object activated
         return self.activationFunctions[currentNode].enclose(compiledFunction);
     };
 
+//    var nodeCount = 0;
 
+    cppn.CPPN.prototype.nrEnclose = function()
+    {
+
+        var self = this;
+
+        //create our enclosed object for each node! (this way we actually have subnetworks functions setup too
+        self.nEnclosed = new Array(self.neuronSignals.length);
+
+        self.bAlreadyEnclosed = new Array(self.neuronSignals.length);
+        self.inEnclosure = new Array(self.neuronSignals.length);
+
+        // Initialize boolean arrays and set the last activation signal, but only if it isn't an input (these have already been set when the input is activated)
+        for (var i = 0; i < self.nEnclosed.length; i++)
+        {
+            // Set as activated if i is an input node, otherwise ensure it is unactivated (false)
+            self.bAlreadyEnclosed[i] = (i < self.totalInputNeuronCount) ? true : false;
+            self.nEnclosed[i] = (i < self.totalInputNeuronCount ? "x" + i : "");
+
+            self.inEnclosure[i] = false;
+
+        }
+
+        // Get each output node activation recursively
+        // NOTE: This is an assumption that genomes have started minimally, and the output nodes lie sequentially after the input nodes
+        for (var i = 0; i < self.outputNeuronCount; i++){
+
+            self.nrEncloseNode(self.totalInputNeuronCount + i);
+
+        }
+
+
+        //now grab our ordered objects
+        var orderedObjects = self.recursiveCountThings();
+
+        //now let's build our functions
+        var nodeFunctions = {};
+
+        var stringFunctions = {};
+
+        for(var i= self.totalInputNeuronCount; i < self.totalNeuronCount; i++)
+        {
+            var fnString = "return " + self.nEnclosed[i] + ';';
+            nodeFunctions[i] = new Function([], fnString);
+            stringFunctions[i] = fnString;
+        }
+
+        var inOrderAct = [];
+        //go through and grab the indices -- no need for rank and things
+        orderedObjects.forEach(function(oNode)
+        {
+            inOrderAct.push(oNode.node);
+        });
+
+
+        var containedFunction = function(nodesInOrder, functionsForNodes, biasCount, outputCount)
+        {
+            return function(inputs)
+            {
+                var bias = 1.0;
+                var context = {};
+                context.rf = new Array(nodesInOrder.length);
+                var totalIn = inputs.length + biasCount;
+
+                for(var i=0; i < biasCount; i++)
+                    context.rf[i] = bias;
+
+                for(var i=0; i < inputs.length; i++)
+                    context.rf[i+biasCount] = inputs[i];
+
+
+                for(var i=0; i < nodesInOrder.length; i++)
+                {
+                    var fIx = nodesInOrder[i];
+//                console.log('Ix to hit: ' fIx + );
+                    context.rf[fIx] = (fIx < totalIn ? context.rf[fIx] : functionsForNodes[fIx].call(context));
+                }
+
+                return context.rf.slice(totalIn, totalIn + outputCount);
+            }
+        };
+
+        //this will return a function that can be run by calling var outputs = functionName(inputs);
+        var contained =  containedFunction(inOrderAct, nodeFunctions, self.biasNeuronCount, self.outputNeuronCount);
+
+        return {contained: contained, stringFunctions: stringFunctions, arrayIdentifier: "this.rf", nodeOrder: inOrderAct};
+
+
+//        console.log(self.nEnclosed[self.totalInputNeuronCount + 0].length);
+//        console.log('Enclosed nodes: ');
+//        console.log(self.nEnclosed);
+
+//        console.log('Ordered: ');
+//        console.log(orderedActivation);
+
+    };
+
+
+
+    cppn.CPPN.prototype.nrEncloseNode = function(currentNode)
+    {
+        var self = this;
+
+        // If we've reached an input node we return since the signal is already set
+
+//        console.log('Checking: ' + currentNode);
+//        console.log('Total: ');
+//        console.log(self.totalInputNeuronCount);
+
+        if (currentNode < self.totalInputNeuronCount)
+        {
+            self.inEnclosure[currentNode] = false;
+            self[currentNode] = 'this.rf[' + currentNode + ']';
+            return;
+        }
+        if (self.bAlreadyEnclosed[currentNode])
+        {
+            self.inEnclosure[currentNode] = false;
+            return;
+        }
+
+        // Mark that the node is currently being calculated
+        self.inEnclosure[currentNode] = true;
+
+        // Adjacency list in reverse holds incoming connections, go through each one and activate it
+        for (var i = 0; i < self.reverseAdjacentList[currentNode].length; i++)
+        {
+            var crntAdjNode = self.reverseAdjacentList[currentNode][i];
+
+            //{ Region recurrant connection handling - not applicable in our implementation
+            // If this node is currently being activated then we have reached a cycle, or recurrant connection. Use the previous activation in this case
+            if (self.inEnclosure[crntAdjNode])
+            {
+                //easy fix, this isn't meant for recurrent networks -- just throw an error!
+                throw new Error("Method not built for recurrent networks!");
+            }
+
+            // Otherwise proceed as normal
+            else
+            {
+
+                // Recurse if this neuron has not been activated yet
+                if (!self.bAlreadyEnclosed[crntAdjNode])
+                    self.nrEncloseNode(crntAdjNode);
+
+//                console.log('Next: ');
+//                console.log(crntAdjNode);
+//                console.log(self.nEnclosed[crntAdjNode]);
+
+                var add = (self.nEnclosed[currentNode] == "" ? "(" : "+");
+
+                //get our weight from adjacency matrix
+                var weight = self.adjacentMatrix[crntAdjNode][currentNode];
+
+                //we have a whole number weight!
+                if(Math.round(weight) === weight)
+                    weight = '' + weight + '.0';
+                else
+                    weight = '' + weight;
+
+
+                // Add it to the new activation
+                self.nEnclosed[currentNode] += add + weight + "*" + "this.rf[" + crntAdjNode + "]";
+
+            }
+            //} endregion
+//            nodeCount++;
+        }
+
+        //if we're empty, we're empty! We don't go no where, derrrr
+        if(self.nEnclosed[currentNode] === '')
+            self.nEnclosed[currentNode] = '0.0';
+        else
+            self.nEnclosed[currentNode] += ')';
+
+        // Mark this neuron as completed
+        self.bAlreadyEnclosed[currentNode] = true;
+
+        // This is no longer being calculated (for cycle detection)
+        self.inEnclosure[currentNode] = false;
+
+
+//        console.log('Enclosed legnth: ' + self.activationFunctions[currentNode].enclose(self.nEnclosed[currentNode]).length);
+
+        self.nEnclosed[currentNode] = self.activationFunctions[currentNode].enclose(self.nEnclosed[currentNode]);
+
+    };
+
+
+    cppn.CPPN.prototype.recursiveCountThings = function()
+    {
+        var self= this;
+
+        var orderedActivation = {};
+
+        var higherLevelRecurse = function(neuron)
+        {
+            var inNode = new Array(self.totalNeuronCount);
+            var nodeCount = new Array(self.totalNeuronCount);
+            var interactCount = new Array(self.totalNeuronCount);
+
+            for(var s=0; s < self.totalNeuronCount; s++) {
+                inNode[s] = false;
+                nodeCount[s] = 0;
+                interactCount[s] = 0;
+            }
+
+            var recurseNode = function(currentNode)
+            {
+                // Mark that the node is currently being calculated
+                inNode[currentNode] = true;
+
+                // Adjacency list in reverse holds incoming connections, go through each one and activate it
+                for (var i = 0; i < self.reverseAdjacentList[currentNode].length; i++)
+                {
+                    var crntAdjNode = self.reverseAdjacentList[currentNode][i];
+                    nodeCount[crntAdjNode] = Math.max(nodeCount[crntAdjNode], nodeCount[currentNode] + 1);
+
+                }
+                //all nodes are marked with correct count, let's continue backwards for each one!
+                for (var i = 0; i < self.reverseAdjacentList[currentNode].length; i++)
+                {
+                    var crntAdjNode = self.reverseAdjacentList[currentNode][i];
+
+                    // Recurse on it! -- already marked above
+                    recurseNode(crntAdjNode);
+                }
+
+    //            nodeCount[currentNode] = nodeCount[currentNode] + 1;
+                inNode[currentNode] = false;
+
+            };
+
+            recurseNode(neuron);
+
+            return nodeCount;
+        };
+
+
+        var orderedObjects = new Array(self.totalNeuronCount);
+
+        // Get each output node activation recursively
+        // NOTE: This is an assumption that genomes have started minimally, and the output nodes lie sequentially after the input nodes
+        for (var m = 0; m < self.outputNeuronCount; m++){
+            //we have ordered count for this output!
+
+            var olist = higherLevelRecurse(self.totalInputNeuronCount + m);
+
+            var nodeSpecificOrdering  = [];
+
+            for(var n=0; n< olist.length; n++)
+            {
+                //we take the maximum depending on whether or not it's been seen before
+                if(orderedObjects[n])
+                    orderedObjects[n] = {node: n, rank: Math.max(orderedObjects[n].rank, olist[n])};
+                else
+                    orderedObjects[n] = {node: n, rank: olist[n]};
+
+                nodeSpecificOrdering.push({node: n, rank: olist[n]});
+            }
+
+            nodeSpecificOrdering.sort(function(a,b){return b.rank - a.rank;});
+
+            orderedActivation[self.totalInputNeuronCount + m] = nodeSpecificOrdering;
+        }
+
+
+        orderedObjects.sort(function(a,b){return b.rank - a.rank;});
+//        console.log(orderedObjects);
+
+
+        return orderedObjects;
+
+
+
+//        self.rf = [];
+//        for(var tn =0; tn < self.totalNeuronCount; tn++)
+//            self.rf.push(0.0);
+
+
+
+
+//        for(var m=0; m < 128*128; m++)
+//        {
+//            var inputs = [1.0, Math.random(),Math.random(),Math.random()];
+//
+//            var onlyNeurons = [].slice.call(inputs);
+//            onlyNeurons.shift();
+//
+//            self.clearSignals();
+//            self.setInputSignals(onlyNeurons);
+//            self.recursiveActivation();
+//
+//            var outs = activationFunction(onlyNeurons);
+//            for(var i=0; i < outs.length; i++)
+//            {
+//
+//                if(outs[i] != self.getOutputSignal(i))
+//                {
+//                    console.log('New Act: '  + outs[i]);
+//                    console.log("Old Act: " + self.getOutputSignal(i));
+//
+//                }
+//            }
+
+//            for(var i=0; i < self.totalInputNeuronCount; i++)
+//            {
+//                self.rf[i] = (i < self.totalInputNeuronCount ? inputs[i] : 0.0);
+//            }
+//
+//
+//            var orderForOutput = orderedObjects;//orderedActivation[self.totalInputNeuronCount];
+//
+//            for(var o=0; o < orderForOutput.length; o++)
+//            {
+//                var oNode = orderForOutput[o];
+//                var nodeIx = oNode.node;
+//
+//                //either it's our inputs, and we just set them up
+//                if(nodeIx >= self.totalInputNeuronCount)
+//                    self.rf[nodeIx] = nodeFunctions[nodeIx].call(self);
+//
+//
+//                var fDiff = (self.rf[nodeIx] - self.neuronSignals[nodeIx]);
+//                if(Math.abs(fDiff)> 0.0)
+//                {
+//                    console.log('NodeNotMatched: ' + nodeIx);
+//                    console.log(self.reverseAdjacentList[nodeIx]);
+//                    console.log('Out: ' + fDiff);
+//
+//                    var iConns = [];
+//                    for(var c=0; c < self.connections.length; c++)
+//                    {
+//                        var sConn = self.connections[c];
+//                        if(sConn.targetIdx == nodeIx)
+//                        {
+//                            iConns.push(sConn);
+//                        }
+//                    }
+//                    console.log('Incoming connections: ');
+//                    console.log(iConns);
+//
+//                }
+////                console.log('Out: ' + self.rf[nodeIx]);
+////                console.log('Act: ' + self.neuronSignals[nodeIx]);
+//
+//
+//    //            console.log('Node: '+ nodeIx + ' Rank: ' + oNode.rank);
+//    //            console.log(self.rf[nodeIx]);
+//
+//            }
+//
+//            for(var o=0; o < self.outputNeuronCount; o++){
+//
+//                var oDiff = (self.rf[self.totalInputNeuronCount + o] - self.getOutputSignal(o));
+//                if(Math.abs(oDiff)> 0.0)
+//                {
+//            //        console.log(self.rf);
+//                    console.log('Act os: ' + self.getOutputSignal(o));
+//                    console.log('End rf: ' + self.rf[self.totalInputNeuronCount]);
+//                }
+//            }
+//        }
+
+
+//        var objToSort = [];
+//
+//        for(var o=0; o < olist.length; o++)
+//        {
+//            if you aren't the output we're interested, but you have a zero count, then you is doin sumtin wrong
+//            if(o != m && olist[o] == 0)
+//                continue;
+//
+//            objToSort.push({node: o, rank: olist[o]});
+//        }
+//
+//        we want descending order!
+//        objToSort.sort(function(a,b){return b.rank - a.rank;});
+
+//        console.log(objToSort);
+//        console.log('Check ordering: ');
+//        console.log(orderedActivation);
+
+    };
 
 
 
