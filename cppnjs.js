@@ -25,7 +25,8 @@
         'cppnConnection':  '/components/cppnConnection.js',
         'cppnActivationFunctions': '/activationFunctions/cppnActivationFunctions.js',
         'cppnActivationFactory': '/activationFunctions/cppnActivationFactory.js',
-        'cppn' : '/cppns/cppn.js'
+        'cppn' : '/cppns/cppn.js',
+        'cppnToGPU' : '/utility/cppnToGPU.js'
     };
 
     //we export our scripts!
