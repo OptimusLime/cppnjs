@@ -671,6 +671,7 @@
 
         }
 
+//        console.log(self.nEnclosed);
 
         //now grab our ordered objects
         var orderedObjects = self.recursiveCountThings();
@@ -682,8 +683,16 @@
 
         var stringFunctions = {};
 
+        var emptyNodes = {};
+
         for(var i= self.totalInputNeuronCount; i < self.totalNeuronCount; i++)
         {
+            //skip functions that aren't defined
+            if(!self.bAlreadyEnclosed[i]){
+                emptyNodes[i] = true;
+                continue;
+            }
+
             var fnString = "return " + self.nEnclosed[i] + ';';
             nodeFunctions[i] = new Function([], fnString);
             stringFunctions[i] = fnString;
@@ -693,7 +702,8 @@
         //go through and grab the indices -- no need for rank and things
         orderedObjects.forEach(function(oNode)
         {
-            inOrderAct.push(oNode.node);
+            if(!emptyNodes[oNode.node])
+                inOrderAct.push(oNode.node);
         });
 
 

@@ -4,7 +4,7 @@
     <list default="true" id="c0e844af-0f9b-4b08-8255-09e0d8eec09a" name="Default" comment="" />
     <ignored path="CPPN.js.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380722118156" ignored="false" />
+    <file path="/Dummy.txt" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380841274262" ignored="false" />
     <file path="/.gitignore" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1375031030975" ignored="false" />
     <file path="$PROJECT_DIR$/../neatjs/package.json" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376937109097" ignored="false" />
     <file path="/package.json" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376835932108" ignored="false" />
@@ -62,7 +62,7 @@
     <file path="$PROJECT_DIR$/../winjs/examples/generic/generic.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376882745940" ignored="false" />
     <file path="/generic.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376775584712" ignored="false" />
     <file path="$PROJECT_DIR$/../winjs/examples/generic/html/index.html" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376938344352" ignored="false" />
-    <file path="/index.html" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376938338927" ignored="false" />
+    <file path="/index.html" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380742157295" ignored="false" />
     <file path="$PROJECT_DIR$/../winjs/examples/generic/node_modules/win-ui/iec/basic/basic.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376776657482" ignored="false" />
     <file path="$PROJECT_DIR$/../winjs/examples/generic/package.json" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376795242125" ignored="false" />
     <file path="$PROJECT_DIR$/../winjs/win-ui/iec/basic/basic.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376776662726" ignored="false" />
@@ -144,9 +144,15 @@
     <file path="$PROJECT_DIR$/../iesor/html/utilities/d3/d3Genome.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376937378861" ignored="false" />
     <file path="$PROJECT_DIR$/../iesor/html/utilities/d3/d3CPPN.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376937452974" ignored="false" />
     <file path="/d3CPPN.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1376937453536" ignored="false" />
-    <file path="$PROJECT_DIR$/../wilterjs/index.html" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380722120654" ignored="false" />
+    <file path="$PROJECT_DIR$/../wilterjs/index.html" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380742169527" ignored="false" />
     <file path="/cppnToGPU.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380722391135" ignored="false" />
     <file path="/cppnjs.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380722577198" ignored="false" />
+    <file path="$PROJECT_DIR$/../wilterjs/js/genomeToFilterShader.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380740197081" ignored="false" />
+    <file path="/genomeToFilterShader.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380740136645" ignored="false" />
+    <file path="$PROJECT_DIR$/../wilterjs/css/smallCSS.css" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380741272576" ignored="false" />
+    <file path="$PROJECT_DIR$/../wilterjs/css/default.css" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380741421647" ignored="false" />
+    <file path="$PROJECT_DIR$/../winjs/win-ui/home/main/ancestor.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380741053268" ignored="false" />
+    <file path="/ancestor.js" changelist="c0e844af-0f9b-4b08-8255-09e0d8eec09a" time="1380741037826" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,19 +172,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cppnjs.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="cppnjs.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cppnjs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="45" selection-start="833" selection-end="833" vertical-scroll-proportion="0.5464983">
+            <state line="30" column="0" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="719" selection-end="719" vertical-scroll-proportion="-13.076923">
+            <state line="7" column="21" selection-start="446" selection-end="446" vertical-scroll-proportion="0.1408284">
               <folding />
             </state>
           </provider>
@@ -196,7 +202,7 @@
       <file leaf-file-name="cppn.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cppns/cppn.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="8" selection-start="1667" selection-end="1667" vertical-scroll-proportion="0.0">
+            <state line="749" column="6" selection-start="29337" selection-end="29337" vertical-scroll-proportion="-32.48">
               <folding />
             </state>
           </provider>
@@ -223,7 +229,7 @@
       <file leaf-file-name="cppnNode.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/cppnNode.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="15" column="24" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -283,13 +289,13 @@
         <option value="$PROJECT_DIR$/test/htmlTest.html" />
         <option value="$PROJECT_DIR$/test/nodejsloadtest.js" />
         <option value="$PROJECT_DIR$/test/cppnTest.js" />
-        <option value="$PROJECT_DIR$/cppns/cppn.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js" />
         <option value="$PROJECT_DIR$/.npmignore" />
         <option value="$PROJECT_DIR$/utility/cppnToGPU.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/cppnjs.js" />
+        <option value="$PROJECT_DIR$/cppns/cppn.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -417,11 +423,11 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="editor.preferences.appearance" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../basewin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../presentations/WIN" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -586,23 +592,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="19" selection-start="19" selection-end="19" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/activationFunctions/cppnActivationFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="45" selection-start="4588" selection-end="4588" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="128" column="45" selection-start="4588" selection-end="4588" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.npmignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="7" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/cppnTest.js">
@@ -633,13 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/cppnNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utility/utilities.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="181" column="6" selection-start="5787" selection-end="5787" vertical-scroll-proportion="0.0">
@@ -654,23 +647,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/cppnjs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="719" selection-end="719" vertical-scroll-proportion="-13.076923">
+        <state line="30" column="0" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/cppnNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="24" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cppns/cppn.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="8" selection-start="1667" selection-end="1667" vertical-scroll-proportion="0.0">
+        <state line="749" column="6" selection-start="29337" selection-end="29337" vertical-scroll-proportion="-32.48">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cppnjs.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="45" selection-start="833" selection-end="833" vertical-scroll-proportion="0.5464983">
+        <state line="7" column="21" selection-start="446" selection-end="446" vertical-scroll-proportion="0.1408284">
           <folding />
         </state>
       </provider>
