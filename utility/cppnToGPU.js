@@ -9,9 +9,18 @@
 
     cppnToGPU.ShaderFragments = {};
 
+
+    cppnToGPU.ShaderFragments.passThroughVariables =
+        [
+            "uniform float texelWidth;",
+            "uniform float texelHeight;"
+
+        ].join('\n');
+
         //simple, doesn't do anything but pass on uv coords to the frag shaders
     cppnToGPU.ShaderFragments.passThroughVS =
     [
+        cppnToGPU.ShaderFragments.passThroughVariables,
         "varying vec2 passCoord;",
 
         "void main()	{",
@@ -21,10 +30,48 @@
         "\n"
     ].join('\n');
 
+    cppnToGPU.ShaderFragments.passThroughVS3x3 =
+        [
+            cppnToGPU.ShaderFragments.passThroughVariables,
+            "varying vec2 sampleCoords[9];",
+
+            "void main()	{",
+
+                "gl_Position = vec4( position, 1.0 );",
+
+                "vec2 widthStep = vec2(texelWidth, 0.0);",
+                "vec2 heightStep = vec2(0.0, texelHeight);",
+                "vec2 widthHeightStep = vec2(texelWidth, texelHeight);",
+                "vec2 widthNegativeHeightStep = vec2(texelWidth, -texelHeight);",
+
+                "vec2 inputTextureCoordinate = uv;",
+
+                "sampleCoords[0] = inputTextureCoordinate.xy;",
+                "sampleCoords[1] = inputTextureCoordinate.xy - widthStep;",
+                "sampleCoords[2] = inputTextureCoordinate.xy + widthStep;",
+
+                "sampleCoords[3] = inputTextureCoordinate.xy - heightStep;",
+                "sampleCoords[4] = inputTextureCoordinate.xy - widthHeightStep;",
+                "sampleCoords[5] = inputTextureCoordinate.xy + widthNegativeHeightStep;",
+
+                "sampleCoords[6] = inputTextureCoordinate.xy + heightStep;",
+                "sampleCoords[7] = inputTextureCoordinate.xy - widthNegativeHeightStep;",
+                "sampleCoords[8] = inputTextureCoordinate.xy + widthHeightStep;",
+
+            "}",
+            "\n"
+        ].join('\n');
+
 
     cppnToGPU.ShaderFragments.variables =
         [
             "varying vec2 passCoord; ",
+            "uniform sampler2D inputTexture; "
+        ].join('\n');
+
+    cppnToGPU.ShaderFragments.variables3x3 =
+        [
+            "varying vec2 sampleCoords[9];",
             "uniform sampler2D inputTexture; "
         ].join('\n');
 
@@ -43,6 +90,8 @@
         //functionobject of the form
 //        {contained: contained, stringFunctions: stringFunctions, arrayIdentifier: "this.rf", nodeOrder: inOrderAct};
 
+        var multiInput = cppn.inputNeuronCount >= 27;
+
 
         var totalNeurons = cppn.totalNeuronCount;
 
@@ -54,7 +103,7 @@
            inorderString += ix +  (ix !== lastIx ? "," : "");
         });
 
-        var defaultVariables = cppnToGPU.ShaderFragments.variables;
+        var defaultVariables = multiInput ? cppnToGPU.ShaderFragments.variables3x3 : cppnToGPU.ShaderFragments.variables;
 
         //create a float array the size of the neurons
 //        var fixedArrayDec = "int order[" + totalNeurons + "](" + inorderString + ");";
@@ -155,7 +204,10 @@
         var additional = specificAddFunction(cppn);
 
 
-        return {vertex: cppnToGPU.ShaderFragments.passThroughVS, fragment: [defaultVariables,arrayDeclaration].concat(wrappedFunctions).concat(activation).concat(additional).join('\n')};
+        return {vertex: multiInput ?
+            cppnToGPU.ShaderFragments.passThroughVS3x3 :
+            cppnToGPU.ShaderFragments.passThroughVS,
+            fragment: [defaultVariables,arrayDeclaration].concat(wrappedFunctions).concat(activation).concat(additional).join('\n')};
 
     };
 
