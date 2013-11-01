@@ -32,7 +32,7 @@ describe('Testing activations against a known working file',function(){
                     functionID = 'Sine2';
 //                console.log('Testing: ' + functionID);
 
-                var actFunction = cppnActivationFactory.Factory.getActivationFunction(functionID);
+                var actFunction = cppnActivationFactory.getActivationFunction(functionID);
 
                 //now fetch our inputs/outputs
                 var tests = functionJSON['tests'];

@@ -5,8 +5,8 @@
   "author" : { "name": "Paul Szerlip",
                 "email": "Paul.Szerlip@cs.ucf.edu",
                 "url": "http://designforcode.com/" },
-  "version": "0.1.2-4",
-  "main":"cppnjs.js",
+  "version": "0.2.0",
+  "main":"cppn.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/OptimusLime/cppnjs.git"

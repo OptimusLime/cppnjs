@@ -1,0 +1,24 @@
+{
+  "name": "cppnjs",
+  "repo": "OptimusLime/cppnjs",
+  "description": "Compositional Pattern Producing Networks in javascript",
+  "version": "0.2.0",
+  "keywords": [],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "cppn.js",
+  "scripts": [
+    "cppn.js",
+      "/activationFunctions/cppnActivationFactory.js",
+      "/activationFunctions/cppnActivationFunctions.js",
+      "/networks/cppnConnection.js",
+      "/networks/cppnNode.js",
+      "/networks/cppn.js",
+      "/types/nodeType.js",
+      "/utility/utilities.js",
+      "/extras/adaptableAdditions.js",
+      "/extras/pureCPPNAdditions.js",
+      "/extras/gpuAdditions.js"
+  ]
+}

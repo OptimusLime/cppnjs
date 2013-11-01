@@ -4,21 +4,22 @@ var fs = require('fs');
 var util = require('util');
 
 var utilities = require('../utility/utilities.js');
-var cppns = require('../cppns/cppn.js');
-var cppnConnection = require('../components/cppnConnection.js');
-var cppnNode = require('../components/cppnNode.js');
+var CPPN = require('../networks/cppn.js');
+var cppnConnection = require('../networks/cppnConnection.js');
 var cppnActivationFactory = require('../activationFunctions/cppnActivationFactory.js');
 
+var pureAdd = require('../extras/pureCPPNAdditions.js');
+var adaptAdd = require('../extras/adaptableAdditions.js');
 
-var start = process.hrtime();
-
-var elapsed_time = function(note){
-    var precision = 3; // 3 decimal places
-    var elapsed = process.hrtime(start)[1] / 1000000; // divide by a million to get nano to milli
-//    console.log(elapsed.toFixed(precision) + " ms - " + note); // print message + time
-    start = process.hrtime(); // reset the timer
-    return elapsed.toFixed(precision);
-};
+//var start = process.hrtime();
+//
+//var elapsed_time = function(note){
+//    var precision = 3; // 3 decimal places
+//    var elapsed = process.hrtime(start)[1] / 1000000; // divide by a million to get nano to milli
+////    console.log(elapsed.toFixed(precision) + " ms - " + note); // print message + time
+//    start = process.hrtime(); // reset the timer
+//    return elapsed.toFixed(precision);
+//};
 
 
 describe('Testing cppns against a known working file',function(){
@@ -48,7 +49,7 @@ describe('Testing cppns against a known working file',function(){
                 {
                     var loadedConn = nodesAndConnections.connections[c];
                     connections.push(
-                        new cppnConnection.CPPNConnection(loadedConn.sourceNeuronIdx, loadedConn.targetNeuronIdx, loadedConn.weight));
+                        new cppnConnection(loadedConn.sourceNeuronIdx, loadedConn.targetNeuronIdx, loadedConn.weight));
                 }
 
                 var activationFunctions = [];
@@ -59,10 +60,10 @@ describe('Testing cppns against a known working file',function(){
                         nodesAndConnections.activationFunctions[af].FunctionId = 'Sine2';
 
                     activationFunctions.push(
-                        cppnActivationFactory.Factory.getActivationFunction(nodesAndConnections.activationFunctions[af].FunctionId));
+                        cppnActivationFactory.getActivationFunction(nodesAndConnections.activationFunctions[af].FunctionId));
                 }
 
-                var cppn = new cppns.CPPN(
+                var cppn = new CPPN(
                     nodesAndConnections.BiasNeuronCount,
                     nodesAndConnections.InputNeuronCount,
                     nodesAndConnections.OutputNeuronCount,
@@ -71,7 +72,7 @@ describe('Testing cppns against a known working file',function(){
                     nodesAndConnections.biasList,
                     activationFunctions
                 );
-                var dupcppn = new cppns.CPPN(
+                var dupcppn = new CPPN(
                     nodesAndConnections.BiasNeuronCount,
                     nodesAndConnections.InputNeuronCount,
                     nodesAndConnections.OutputNeuronCount,
@@ -159,7 +160,7 @@ describe('Testing cppns against a known working file',function(){
                 nodesAndConnections.biasList.push(0);
 
                 activationFunctions.push(
-                    cppnActivationFactory.Factory.getRandomActivationFunction());
+                    cppnActivationFactory.getRandomActivationFunction());
             }
 
             //now we create random connections between inputs and outputs, nothing overlapping
@@ -193,7 +194,7 @@ describe('Testing cppns against a known working file',function(){
                 {
                     existingConnections[cs] = true;
                     connections.push(
-                        new cppnConnection.CPPNConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
+                        new cppnConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
                 }
             }
 
@@ -206,7 +207,7 @@ describe('Testing cppns against a known working file',function(){
 //            console.log(nodesAndConnections);
 //
 
-            var cppn = new cppns.CPPN(
+            var cppn = new CPPN(
                 nodesAndConnections.BiasNeuronCount,
                 nodesAndConnections.InputNeuronCount,
                 nodesAndConnections.OutputNeuronCount,
@@ -239,9 +240,9 @@ describe('Testing cppns against a known working file',function(){
             //target is an input any one!
             tgt = utilities.next(nodesAndConnections.BiasNeuronCount + nodesAndConnections.InputNeuronCount);
 
-            connections.push(new cppnConnection.CPPNConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
+            connections.push(new cppnConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
 
-            cppn = new cppns.CPPN(
+            cppn = new CPPN(
                 nodesAndConnections.BiasNeuronCount,
                 nodesAndConnections.InputNeuronCount,
                 nodesAndConnections.OutputNeuronCount,
@@ -277,14 +278,14 @@ describe('Testing cppns against a known working file',function(){
                 {
                     existingConnections[cs] = true;
                     connections.push(
-                        new cppnConnection.CPPNConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
+                        new cppnConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
                 }
                 cs = '' + tgt + ',' + src;
                 if(!existingConnections[cs])
                 {
                     existingConnections[cs] = true;
                     connections.push(
-                        new cppnConnection.CPPNConnection(tgt, src, (utilities.next(2)*2 -1) * utilities.nextDouble()));
+                        new cppnConnection(tgt, src, (utilities.next(2)*2 -1) * utilities.nextDouble()));
                 }
                 //we must make sure one of these connections is connected to an output
 
@@ -304,12 +305,12 @@ describe('Testing cppns against a known working file',function(){
                 {
                     existingConnections[cs] = true;
                     connections.push(
-                        new cppnConnection.CPPNConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
+                        new cppnConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
                 }
 
             }
 
-            cppn = new cppns.CPPN(
+            cppn = new CPPN(
                 nodesAndConnections.BiasNeuronCount,
                 nodesAndConnections.InputNeuronCount,
                 nodesAndConnections.OutputNeuronCount,
@@ -371,7 +372,7 @@ describe('Testing cppns against a known working file',function(){
                 nodesAndConnections.biasList.push(0);
 
                 activationFunctions.push(
-                    cppnActivationFactory.Factory.getRandomActivationFunction());
+                    cppnActivationFactory.getRandomActivationFunction());
             }
 
             //now we create random connections between inputs and outputs, nothing overlapping
@@ -405,11 +406,11 @@ describe('Testing cppns against a known working file',function(){
                 {
                     existingConnections[cs] = true;
                     connections.push(
-                        new cppnConnection.CPPNConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
+                        new cppnConnection(src, tgt, (utilities.next(2)*2 -1) * utilities.nextDouble()));
                 }
             }
 
-            var cppn = new cppns.CPPN(
+            var cppn = new CPPN(
                 nodesAndConnections.BiasNeuronCount,
                 nodesAndConnections.InputNeuronCount,
                 nodesAndConnections.OutputNeuronCount,
@@ -431,13 +432,16 @@ describe('Testing cppns against a known working file',function(){
 //            console.log(activationFunctions);
 //            console.log(connections);
 
-            var enclosures = cppn.recursiveEnclosure();
+            var pureFunctionInfo = cppn.createPureCPPNFunctions();
 
-            for(var e=0; e< enclosures.length; e++)
-            {
-                var enclosure = enclosures[e];
-                var usedInputs = enclosure.inputs;
-                var eFunction = enclosure.function;
+
+            var cppnFunction = pureFunctionInfo.contained;
+
+//            for(var e=0; e< enclosures.length; e++)
+//            {
+//                var enclosure = enclosures[e];
+//                var usedInputs = enclosure.inputs;
+//                var eFunction = enclosure.function;
 
 //                console.log('Used inputs: ' + util.inspect(usedInputs));
 //                console.log("inputs: " + util.inspect(inputs, {depth:null}));
@@ -477,13 +481,18 @@ describe('Testing cppns against a known working file',function(){
 //                    avgSpeedup += cppnTime/funTime;
 //                    speedCount ++;
 
+
+                    var outputs = cppnFunction(tempIns);
+
                     cppn.clearSignals();
                     cppn.setInputSignals(tempIns);
                     cppn.recursiveActivation();
-                    var outCPPN = cppn.getOutputSignal(e);
-                    var outFunction= eFunction.apply(eFunction, tempIns);
 
-                    outFunction.should.equal(outCPPN);
+                    for(var e=0; e < cppn.outputNeuronCount; e++)
+                    {
+                        cppn.getOutputSignal(e).should.equal(outputs[e]);
+                    }
+
                 }
 //                console.log("inputs: " + util.inspect(tempIns, {depth:null}));
 //                console.log('outCPPN: ' + outCPPN);
@@ -492,7 +501,7 @@ describe('Testing cppns against a known working file',function(){
            }
 
 
-        }
+//        }
 
 //        console.log('Fun Speedup? : ' + avgSpeedup/speedCount);
 
