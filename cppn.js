@@ -1,8 +1,10 @@
-
-
 var cppnjs = {};
 
+//export the cppn library
 module.exports = cppnjs;
+
+//CPPNs
+cppnjs.cppn = require('./networks/cppn.js');
 
 //nodes and connections!
 cppnjs.cppnNode = require('./networks/cppnNode.js');
@@ -15,7 +17,7 @@ cppnjs.cppnActivationFactory = require('./activationFunctions/cppnActivationFact
 //and the utilities to round it out!
 cppnjs.utilities = require('./utility/utilities.js');
 
-
-
+//exporting the node type
+cppnjs.NodeType = require('./types/nodeType.js');
 
 
