@@ -1,5 +1,5 @@
 {
-  "name": "cppn",
+  "name": "cppnjs",
   "description": "Compositional Pattern Producing Networks (CPPN), a form of Artificial Neural Network with differing activation functions, implemented in Javascript with Mocha tests for verification",
   "keywords": ["Neural Networks", "ANN", "CPPN", "NEAT"],
   "author" : { "name": "Paul Szerlip",
