@@ -6,6 +6,16 @@ module.exports = cppnjs;
 //CPPNs
 cppnjs.cppn = require('./networks/cppn.js');
 
+cppnjs.addAdaptable = function()
+{
+    require('./extras/adaptableAdditions.js');
+};
+
+cppnjs.addPureCPPN = function()
+{
+    require('./extras/pureCPPNAdditions.js');
+};
+
 cppnjs.addGPUExtras = function()
 {
     //requires pureCPPN activations
@@ -16,15 +26,8 @@ cppnjs.addGPUExtras = function()
 //add GPU extras by default
 cppnjs.addGPUExtras();
 
-cppnjs.addAdaptable = function()
-{
-    require('./extras/adaptableAdditions.js');
-};
 
-cppnjs.addPureCPPN = function()
-{
-  require('./extras/pureCPPNAdditions.js');
-};
+
 
 
 //nodes and connections!
