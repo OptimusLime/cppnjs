@@ -1,6 +1,4 @@
-module.exports = NodeType;
-
-NodeType =
+var NodeType =
 {
     bias : "Bias",
     input: "Input",
@@ -9,4 +7,4 @@ NodeType =
     other : "Other"
 };
 
-
+module.exports = NodeType;
