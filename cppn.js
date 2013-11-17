@@ -8,6 +8,8 @@ cppnjs.cppn = require('./networks/cppn.js');
 
 cppnjs.addGPUExtras = function()
 {
+    //requires pureCPPN activations
+    cppnjs.addPureCPPN();
     require('./extras/gpuAdditions.js');
 };
 
