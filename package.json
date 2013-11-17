@@ -5,7 +5,7 @@
   "author" : { "name": "Paul Szerlip",
                 "email": "Paul.Szerlip@cs.ucf.edu",
                 "url": "http://designforcode.com/" },
-  "version": "0.2.4",
+  "version": "0.2.5",
   "main":"cppn.js",
   "repository": {
     "type": "git",
@@ -14,6 +14,7 @@
   "bugs" : "https://github.com/OptimusLime/cppnjs/issues",
   "license":"MIT",
   "devDependencies": {
+     "node-watch" : "*",
     "mocha": "1.1.x",
     "should": "1.1.x"
   }
