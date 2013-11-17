@@ -6,6 +6,7 @@ module.exports = cppnjs;
 //CPPNs
 cppnjs.cppn = require('./networks/cppn.js');
 
+
 //nodes and connections!
 cppnjs.cppnNode = require('./networks/cppnNode.js');
 cppnjs.cppnConnection = require('./networks/cppnConnection.js');
