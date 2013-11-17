@@ -2,7 +2,7 @@
   "name": "cppnjs",
   "repo": "OptimusLime/cppnjs",
   "description": "Compositional Pattern Producing Networks in javascript (type of artificial neural network)",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "keywords": ["Neural Networks", "ANN", "CPPN", "NEAT"],
   "dependencies": {},
   "development": {},
@@ -10,15 +10,15 @@
   "main": "cppn.js",
   "scripts": [
     "cppn.js",
-      "/activationFunctions/cppnActivationFactory.js",
-      "/activationFunctions/cppnActivationFunctions.js",
-      "/networks/cppnConnection.js",
-      "/networks/cppnNode.js",
-      "/networks/cppn.js",
-      "/types/nodeType.js",
-      "/utility/utilities.js",
-      "/extras/adaptableAdditions.js",
-      "/extras/pureCPPNAdditions.js",
-      "/extras/gpuAdditions.js"
+      "./activationFunctions/cppnActivationFactory.js",
+      "./activationFunctions/cppnActivationFunctions.js",
+      "./networks/cppnConnection.js",
+      "./networks/cppnNode.js",
+      "./networks/cppn.js",
+      "./types/nodeType.js",
+      "./utility/utilities.js",
+      "./extras/adaptableAdditions.js",
+      "./extras/pureCPPNAdditions.js",
+      "./extras/gpuAdditions.js"
   ]
 }

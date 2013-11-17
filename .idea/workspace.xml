@@ -247,10 +247,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="package.json" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="package.json" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="19" selection-start="446" selection-end="446" vertical-scroll-proportion="0.1408284">
+            <state line="7" column="19" selection-start="446" selection-end="446" vertical-scroll-proportion="-4.576923">
               <folding />
             </state>
           </provider>
@@ -292,10 +292,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="component.json" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="component.json" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/component.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="1" selection-start="739" selection-end="739" vertical-scroll-proportion="-15.038462">
+            <state line="21" column="8" selection-start="719" selection-end="719" vertical-scroll-proportion="0.4224852">
               <folding />
             </state>
           </provider>
@@ -369,8 +369,8 @@
         <option value="$PROJECT_DIR$/test/cppnTest.js" />
         <option value="$PROJECT_DIR$/cppn.js" />
         <option value="$PROJECT_DIR$/../neatjs/component.json" />
-        <option value="$PROJECT_DIR$/component.json" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/component.json" />
       </list>
     </option>
   </component>
@@ -620,7 +620,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -818,16 +818,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/component.json">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="1" selection-start="739" selection-end="739" vertical-scroll-proportion="-15.038462">
+        <state line="7" column="19" selection-start="446" selection-end="446" vertical-scroll-proportion="-4.576923">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/component.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="19" selection-start="446" selection-end="446" vertical-scroll-proportion="0.1408284">
+        <state line="21" column="8" selection-start="719" selection-end="719" vertical-scroll-proportion="0.4224852">
           <folding />
         </state>
       </provider>
