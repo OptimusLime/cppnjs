@@ -1,5 +1,5 @@
 var utils = require('../utility/utilities.js');
-var cppnActivationFunctions = require('./cppnActivationFunctions.js');
+var cppnActivationFunctions = require('activationFunctions/cppnActivationFunctions.js');
 
 var Factory = {};
 
